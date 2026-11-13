@@ -104,7 +104,9 @@ def glibc_needs(binary: Path):
 def build(project_dir: Path, target: str):
     deps = project_dir / "build" / "_deps"
     cfg = ["cmake", "-B", "build-release", "-G", "Ninja", "-DCMAKE_BUILD_TYPE=Release", "-DALBION_PORTABLE_LINUX=ON"]
-    if (deps / "juce-src").is_dir():   # reuse the sources the dev build already downloaded
+    # Reuse the sources the dev build already downloaded, but only when build-release is
+    # configured for the first time: CMake can't switch an existing build to other sources.
+    if (deps / "juce-src").is_dir() and not (project_dir / "build-release" / "CMakeCache.txt").exists():
         cfg += [f"-DFETCHCONTENT_SOURCE_DIR_JUCE={deps / 'juce-src'}",
                 f"-DFETCHCONTENT_SOURCE_DIR_CLAP_JUCE_EXTENSIONS={deps / 'clap_juce_extensions-src'}"]
     run(cfg, project_dir)
