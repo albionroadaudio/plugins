@@ -1,0 +1,59 @@
+# Breakbeat, Big Beat & Electro
+genre: Breakbeat
+defaults: bpm=125 time=4/4
+
+groove: Breakbeat Basic
+  CH  x-x- x-x- x-x- x-x-
+  SN  ---- X--- ---- X---
+  BD  x--- ---- --x- ----
+
+groove: Funky Break  bars=2 swing=15
+  CH  x-x- x-x- x-x- x-x- | x-x- x-x- x-x- x-x-
+  SN  ---- X--g -g-X -g-g | -g-X --g- X--g -X--
+  BD  x-x- ---- --x- ---- | ---- --x- x-x- ----
+
+groove: Big Beat  bpm=110
+  CH  x-x- x-x- x-x- x-x-
+  OH  ---- ---- ---- --x-
+  SN  ---- X--- ---- X---
+  TB  x-x- x-x- x-x- x-x-
+  BD  x--- --x- x-x- ----
+
+groove: Nu Skool Breaks  bpm=132
+  CH  xoxo xoxo xoxo xoxo
+  SN  ---- X--- ---- X---
+  BD  x--- ---x --x- ----
+
+groove: Electro 808  bpm=128
+  CH  xoxo xoxo xoxo xoxo
+  CL  ---- X--- ---- X---
+  BD  x--- ---- --x- ----
+  CB  ---- ---- ---- --x-
+
+groove: Electro Funk  bpm=112
+  CH  x-x- x-x- x-x- x-x-
+  CL  ---- X--- ---- X---
+  BD  x--- ---x --x- x---
+  HC  ---- ---- ---x ----
+  LC  ---- ---- ---- -x--
+
+groove: Miami Bass  bpm=130
+  CH  xxxx xxxx xxxx xxxx
+  CL  ---- X--- ---- X---
+  BD  x--- ---- --x- --x-
+
+groove: Breakbeat Halftime  bpm=90
+  CH  x-x- x-x- x-x- x-x-
+  SN  ---- ---- X--- ----
+  BD  x--- ---x --x- ----
+
+fill: Chopped Snare
+  SN  -x-x x-xX -xX- XXXX
+  BD  x--- -x-- x--- ----
+
+fill: Electro Tom Run
+  HT  ---- ---- x-x- ----
+  MT  ---- ---- -x-x ----
+  LT  ---- ---- ---- xxxx
+  CL  ---- X--- ---- ----
+  BD  x--- ---- ---- ----

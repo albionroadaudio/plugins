@@ -1,0 +1,76 @@
+# Jazz
+# Swing patterns use 12 steps per bar (8th-note triplets).
+genre: Jazz
+defaults: bpm=140 time=4/4
+
+groove: Swing Ride
+  RD  x-- x-x x-- x-x
+  PH  --- x-- --- x--
+  BD  g-- g-- g-- g--
+
+groove: Swing with Comping  bars=2
+  RD  x-- x-x x-- x-x | x-- x-x x-- x-x
+  PH  --- x-- --- x-- | --- x-- --- x--
+  SN  --- --g --- --- | --x --- --- -g-
+  BD  --- --- --- --- | --- --- x-- ---
+
+groove: Up-Tempo Bebop  bpm=240
+  RD  x-- x-x x-- x-x
+  PH  --- x-- --- x--
+  SN  --- --- --g ---
+  BD  --- --- --- --g
+
+groove: Ballad Brushes  bpm=60
+  SN  ooo ooo ooo ooo
+  PH  --- x-- --- x--
+  BD  g-- --- g-- ---
+
+groove: Two-Feel  bpm=120
+  RD  x-- x-x x-- x-x
+  PH  --- x-- --- x--
+  BD  x-- --- x-- ---
+
+groove: Jazz Waltz  bpm=150 time=3/4
+  RD  x-- x-x x-x
+  PH  --- x-- x--
+  BD  g-- --- ---
+  SN  --- --- -g-
+
+groove: Afro-Cuban 12/8  bpm=150 time=12/8
+  RB  x-x-xx-x-x-x
+  PH  ---x-----x--
+  BD  x-----x-----
+  SS  ----x-----x-
+
+groove: Straight 8th Latin Jazz  bpm=160
+  RD  x-x- x-x- x-x- x-x-
+  SS  ---x --x- ---- x---
+  BD  x--x ---- x--x ----
+
+groove: Jazz Funk  bpm=110
+  CH  xoxo xoxo xoxo xoxo
+  SN  ---- X--g -g-- X--g
+  BD  x--- --x- -x-- ----
+  RB  x--- ---- ---- ----
+
+groove: Shuffle Ride Swing  bpm=130
+  RD  x-x x-x x-x x-x
+  PH  --- x-- --- x--
+  SN  --- -g- --- -g-
+  BD  g-- --- g-- ---
+
+fill: Triplet Snare-Tom
+  SN  --- --- x-x x--
+  HT  --- --- -x- -x-
+  FT  --- --- --- --X
+  RD  x-- x-x --- ---
+  PH  --- x-- --- x--
+
+fill: Bebop Kick-Snare Trade
+  SN  -x- -xx --x -x-
+  BD  x-- x-- x-- --x
+  RD  x-- --- x-- ---
+
+fill: Brush Sweep Accents  bpm=60
+  SN  ooo ooo xxx XXX
+  PH  --- x-- --- x--

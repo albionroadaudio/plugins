@@ -1,0 +1,98 @@
+# Rock
+# 16 steps per bar = 16th notes; one group of four = one beat.
+genre: Rock
+defaults: bpm=110 time=4/4
+
+groove: Basic 8ths
+  CH  x-x- x-x- x-x- x-x-
+  SN  ---- X--- ---- X---
+  BD  x--- ---- x--- ----
+
+groove: Driving 8ths  bpm=126
+  CH  X-x- X-x- X-x- X-x-
+  SN  ---- X--- ---- X---
+  BD  x--- ---- x-x- ----
+
+groove: Syncopated Kick
+  CH  x-x- x-x- x-x- x-x-
+  SN  ---- X--- ---- X---
+  BD  x--- ---x x-x- ----
+
+groove: Four on the Floor Rock  bpm=124
+  CH  x-x- x-x- x-x- x-x-
+  SN  ---- X--- ---- X---
+  BD  x--- x--- x--- x---
+
+groove: Ride Rock
+  RD  x-x- x-x- x-x- x-x-
+  SN  ---- X--- ---- X---
+  BD  x--- --x- x--- ----
+
+groove: 16th Hats  bpm=98
+  CH  xoxo xoxo xoxo xoxo
+  SN  ---- X--- ---- X---
+  BD  x--- ---x x-x- ----
+
+groove: Half-Time  bpm=140
+  CH  x-x- x-x- x-x- x-x-
+  SN  ---- ---- X--- ----
+  BD  x--- ---- ---- --x-
+
+groove: Open Hat Stomp  bpm=100
+  CH  x-x- x-x- x-x- x---
+  OH  ---- ---- ---- --x-
+  SN  ---- X--- ---- X---
+  BD  x--- ---- x--x ----
+
+groove: Floor Tom Groove  bpm=105
+  FT  x-x- x-x- x-x- x-x-
+  SN  ---- X--- ---- X---
+  BD  x--- ---- x--- ----
+
+groove: Two-Bar Rock  bars=2
+  CH  x-x- x-x- x-x- x-x- | x-x- x-x- x-x- x-x-
+  SN  ---- X--- ---- X--- | ---- X--- ---- X---
+  BD  x--- ---- x--- ---- | x--- ---x x-x- ----
+
+groove: Power Ballad  bpm=72
+  CH  x-x- x-x- x-x- x-x-
+  SN  ---- X--- ---- X---
+  BD  x--- ---- x-x- ----
+
+groove: Crash Ride Anthem  bpm=130
+  CR  x-x- x-x- x-x- x-x-
+  SN  ---- X--- ---- X---
+  BD  x--- ---- x-x- ----
+
+fill: Snare 16ths
+  CH  x-x- x-x- ---- ----
+  SN  ---- X--- xxxx XxXx
+  BD  x--- ---- ---- ----
+
+fill: Around the Toms
+  SN  Xxxx ---- ---- ----
+  HT  ---- Xxxx ---- ----
+  MT  ---- ---- Xxxx ----
+  FT  ---- ---- ---- XxXx
+  BD  x--- x--- x--- x---
+
+fill: Last Beat Tom Run
+  CH  x-x- x-x- x-x- ----
+  SN  ---- X--- ---- Xx--
+  HT  ---- ---- ---- --x-
+  FT  ---- ---- ---- ---x
+  BD  x--- ---- x--- ----
+
+fill: Snare and Kick 8ths
+  SN  ---- X-x- X-x- X-X-
+  BD  x--- -x-x -x-x -x-x
+  CH  x-x- ---- ---- ----
+
+# rows can mix resolutions: the toms below are 8th-note triplets (12 per bar)
+fill: Triplet Toms
+  CH  x-x- x-x- ---- ----
+  SN  ---- X--- ---- ----
+  HT  --- --- Xx- ---
+  MT  --- --- --x x--
+  FT  --- --- --- -xX
+  BD  x--- ---- ---- ----

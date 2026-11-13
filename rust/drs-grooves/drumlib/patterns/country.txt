@@ -1,0 +1,62 @@
+# Country, Folk & Americana
+genre: Country & Folk
+defaults: bpm=110 time=4/4
+
+groove: Train Beat  bpm=120
+  SN  gggg Xggg gggg Xggg
+  BD  x--- ---- x--- ----
+
+groove: Country Two-Step  bpm=200
+  CH  x-x- x-x- x-x- x-x-
+  SN  ---- X--- ---- X---
+  BD  x--- ---- x--- ----
+
+groove: Boom-Chick  bpm=180
+  SS  ---- X--- ---- X---
+  BD  x--- ---- x--- ----
+  PH  ---- x--- ---- x---
+
+groove: Country Shuffle  bpm=120
+  CH  x-x x-x x-x x-x
+  SN  --- X-- --- X--
+  BD  x-- --- x-- ---
+
+groove: Country Rock  bpm=124
+  CH  x-x- x-x- x-x- x-x-
+  SN  ---- X--- ---- X---
+  BD  x--- --x- x--- ----
+  TB  ---- x--- ---- x---
+
+groove: Folk Floor Tom Stomp  bpm=100
+  FT  x--- x--- x--- x---
+  TB  ---- x--- ---- x---
+  BD  x--- x--- x--- x---
+
+groove: Americana Brush  bpm=90
+  SN  oxoo oxoo oxoo oxoo
+  SS  ---- X--- ---- X---
+  BD  x--- ---- x--- ----
+
+groove: Bluegrass Snare  bpm=140
+  SN  ---- X--- ---- X---
+  SS  ---- ---- ---- ----
+  BD  x--- ---- x--- ----
+  CH  ---- x--- ---- x---
+
+groove: Country Waltz  bpm=120 time=3/4
+  CH  x-x- x-x- x-x-
+  SS  ---- x--- x---
+  BD  x--- ---- ----
+
+fill: Train Roll
+  SN  gggg Xggg xxxx XXXX
+  BD  x--- ---- x--- ----
+
+fill: Country Tom Pickup
+  SN  ---- X--- ---- --x-
+  FT  ---- ---- ---- x--x
+  BD  x--- ---- x--- ----
+
+fill: Waltz Snare Roll  time=3/4
+  SN  ---- xxxx XXXX
+  BD  x--- ---- ----

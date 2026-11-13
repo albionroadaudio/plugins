@@ -1,0 +1,70 @@
+# Trap, Drill and Phonk
+# Hats use r (two 32nds), t (three) and q (four) for rolls.
+# Rows with 24 steps per bar are 16th-note triplets.
+genre: Trap
+defaults: bpm=140 time=4/4
+
+groove: Trap Basic
+  CH  xxxx xxxx xxxx xxrr
+  CL  ---- ---- X--- ----
+  BD  x--- ---- --x- ----
+
+groove: Trap Rolls  bars=2
+  CH  xxxx xxrr xxxx xtxx | xxxx xxxx xrxr qqxx
+  CL  ---- ---- X--- ---- | ---- ---- X--- ----
+  BD  x--- ---x ---- ---- | x--- --x- ---x ----
+
+groove: Trap Triplet Hats  bars=2
+  CH  xxxxxx xxxxxx xx-xx- xxxxxx | xxxxxx xx-xx- xxxxxx xxxxxx
+  CL  ---- ---- X--- ---- | ---- ---- X--- ----
+  BD  x--- ---- --x- ---- | x--- --x- ---- -x--
+
+groove: Trap Open Hat Bounce
+  CH  x-x- x-x- x-x- x-xr
+  OH  ---- --x- ---- ----
+  CL  ---- ---- X--- ----
+  SN  ---- ---- X--- ----
+  BD  x--- ---x ---x ----
+
+groove: Dark Trap  bpm=130  bars=2
+  CH  x-x- x-x- x-x- x-x- | x-x- x-x- x-x- rrrr
+  CL  ---- ---- X--- ---- | ---- ---- X--- ----
+  BD  x--- ---- ---- --x- | x--- ---- -x-- ----
+  RB  x--- ---- ---- ---- | ---- ---- ---- ----
+
+groove: UK Drill  bpm=142  bars=2
+  CH  x--x--x--x-- x--x--x--x-- | x--x--x--x-- x--x--xx-x-x
+  SN  ---- ---- X--- ---- | ---- --X- ---- --X-
+  BD  x--- ---- --x- ---- | ---- ---- x--- ----
+
+groove: NY Drill  bpm=144  bars=2
+  CH  x-x--x x-x--x x-x--x x-x--x | x-x--x x-x--x x-x--x xxxxxx
+  SN  ---- ---- X--- ---- | ---- --X- ---- --X-
+  BD  x--- ---x ---- ---- | x--- ---- -x-- ----
+
+groove: Phonk Cowbell  bpm=130
+  CB  x--x --x- x--x --x-
+  CH  x-x- x-x- x-x- x-x-
+  CL  ---- X--- ---- X---
+  BD  x--- ---- x-x- ----
+
+groove: Rage  bpm=150
+  CH  xxxx xxxx xxxx xxxx
+  OH  ---- ---- ---- ---x
+  CL  ---- ---- X--- ----
+  SN  ---- ---- X--- ----
+  BD  x--x ---- x--x ---x
+
+fill: Hat Roll Ramp
+  CH  xxxx rrrr tttt qqqq
+  CL  ---- ---- X--- ----
+  BD  x--- ---- ---- ----
+
+fill: Snare Roll Riser
+  SN  ---- x-x- rrrr qqQQ
+  BD  x--- ---- ---- ----
+
+fill: Triplet Stop
+  CH  xxxxxx xxxxxx ------ ------
+  CL  ---- ---- ---- XX--
+  BD  x--- ---- ---- ----

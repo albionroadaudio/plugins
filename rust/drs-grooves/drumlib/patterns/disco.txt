@@ -1,0 +1,54 @@
+# Disco & Nu-Disco
+genre: Disco
+defaults: bpm=120 time=4/4
+
+groove: Classic Disco
+  CH  x--- x--- x--- x---
+  OH  --x- --x- --x- --x-
+  SN  ---- X--- ---- X---
+  BD  x--- x--- x--- x---
+
+groove: Disco 16ths
+  CH  xoxo xoxo xoxo xoxo
+  OH  --x- --x- --x- --x-
+  SN  ---- X--- ---- X---
+  BD  x--- x--- x--- x---
+
+groove: Disco with Toms
+  CH  x--- x--- x--- x---
+  OH  --x- --x- --x- --x-
+  SN  ---- X--- ---- X---
+  LT  ---- ---- ---- --xx
+  BD  x--- x--- x--- x---
+
+groove: Nu-Disco Shuffle  bpm=118 swing=30
+  CH  xoxo xoxo xoxo xoxo
+  OH  --x- --x- --x- --x-
+  CL  ---- X--- ---- X---
+  SH  oxoo oxoo oxoo oxoo
+  BD  x--- x--- x--- x---
+
+groove: Disco Funk  bpm=112
+  CH  xoxo xoxo xoxo xoxo
+  OH  --x- ---- --x- ----
+  SN  ---- X--g ---- X---
+  BD  x--- x--x x--- x---
+
+groove: Italo Pulse  bpm=124
+  CH  ---- ---- ---- ----
+  OH  --x- --x- --x- --x-
+  CL  ---- X--- ---- X---
+  BD  x--- x--- x--- x---
+  CB  ---x ---- ---x --x-
+
+fill: Disco Snare Roll
+  SN  ---- x-x- xxxx XXXX
+  BD  x--- x--- x--- x---
+  OH  --x- --x- ---- ----
+
+fill: Syndrum-Style Toms
+  HT  ---- ---- x--- ----
+  MT  ---- ---- --x- x---
+  LT  ---- ---- ---- --xx
+  SN  ---- X--- ---- ----
+  BD  x--- x--- x--- x---

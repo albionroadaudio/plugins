@@ -1,0 +1,110 @@
+# Grunge & Alternative — DRS Kit
+# Sloshy semi-open hats, heavy backbeats, crash-riding choruses, quiet verses.
+genre: Grunge
+defaults: bpm=100 time=4/4
+
+groove: Heavy Backbeat
+  HSO x-x- x-x- x-x- x-x-
+  SN  ---- X--- ---- X---
+  KD  x--- ---x x-x- ----
+
+groove: Quiet Verse  bpm=110
+  HH  o-o- o-o- o-o- o-o-
+  SN  ---- x--- ---- x---
+  KD  x--- ---- x--- ----
+
+groove: Loud Chorus Crash Ride  bpm=115
+  CL  x-x- x-x- x-x- x-x-
+  SN  ---- X--- ---- X---
+  KD  x-x- --x- x-x- ----
+
+groove: Sludge  bpm=70
+  CL  x--- ---- ---- ----
+  RD  --x- x-x- x-x- x-x-
+  SN  ---- X--- ---- X---
+  KD  x--- ---- x--x ----
+
+groove: Half-Time Dirge  bpm=130
+  HSO x-x- x-x- x-x- x-x-
+  SN  ---- ---- X--- ----
+  KD  x--- ---x ---- ----
+
+groove: Stomp Toms  bpm=104
+  T3  x-x- x-x- x-x- x-x-
+  SN  ---- X--- ---- X---
+  KD  x--- ---- x--- ----
+
+groove: Washy 8ths  bpm=96
+  HO  x-x- x-x- x-x- x-x-
+  SN  ---- X--- ---- X---
+  KD  x--- --x- x--- ----
+
+groove: Seattle Swing  bpm=92 swing=30
+  HH  x-x- x-x- x-x- x-x-
+  SN  ---- X--g ---- X---
+  KD  x--- --x- x-x- ----
+
+groove: Two-Bar Pound  bars=2
+  CR  x--- ---- ---- ---- | ---- ---- ---- ----
+  HSO --x- x-x- x-x- x-x- | x-x- x-x- x-x- x-x-
+  SN  ---- X--- ---- X--- | ---- X--- ---- X---
+  KD  x--- ---x x--- ---- | x-x- ---x x-x- --x-
+
+groove: Alt 16ths  bpm=98
+  HH  xoxo xoxo xoxo xoxo
+  SN  ---- X--- ---- X---
+  KD  x--x --x- --x- ----
+
+groove: Tom Verse  bpm=108
+  T2  x--x --x- x--x --x-
+  XS  ---- x--- ---- x---
+  KD  x--- ---- x--- ----
+
+groove: Big Ride Chorus  bpm=120
+  RD  x-x- x-x- x-x- x-x-
+  RB  x--- ---- x--- ----
+  SN  ---- X--- ---- X---
+  KD  x--- --x- x-x- ----
+
+groove: Drop-D Riff Follow  bpm=110
+  HS  x-x- x-x- x-x- x-x-
+  SN  ---- X--- ---- X---
+  KD  xx-- --x- xx-- ----
+
+groove: Slow Burn 6/8  time=6/8 bpm=66
+  HSO xxxxxx
+  SN  ---X--
+  KD  x----x
+
+groove: Crash Hits Unison  bpm=112
+  CL  x--- ---- ---- ----
+  CR  ---- ---- x--- ----
+  SN  ---- X--- ---- X---
+  KD  x--- ---- x--- ----
+
+fill: Floor Tom Thunder
+  T3  xxxx xxxx ---- ----
+  T2  ---- ---- xxxx ----
+  SN  ---- ---- ---- XXXX
+  KD  x--- x--- x--- x---
+
+fill: Big Tom Descent
+  T1  Xx-- ---- ---- ----
+  T2  --xX x--- ---- ----
+  T3  ---- -xXx XxXx ----
+  SN  ---- ---- ---- X-X-
+  KD  x--- ---- x--- -x-x
+
+fill: Crash Stabs
+  CL  x--- ---- x--- ----
+  CR  ---- x--- ---- x-x-
+  SN  x--- x--- x--- x-x-
+  KD  x--- x--- x--- x-x-
+
+fill: Snare 8ths Lift
+  SN  x-x- x-x- X-X- XXXX
+  KD  x--- x--- x--- ----
+
+fill: 6/8 Fill  time=6/8
+  SN  ---xxx
+  KD  x-----

@@ -1,0 +1,84 @@
+# Punk — DRS Kit
+genre: Punk
+defaults: bpm=180 time=4/4
+
+groove: Straight Punk 8ths
+  HS  x-x- x-x- x-x- x-x-
+  SN  ---- X--- ---- X---
+  KD  x-x- ---- x-x- ----
+
+groove: Skank Beat  bpm=190
+  HH  x-x- x-x- x-x- x-x-
+  SN  --X- --X- --X- --X-
+  KD  x--- x--- x--- x---
+
+groove: D-Beat  bpm=170
+  CR  x-x- x-x- x-x- x-x-
+  SN  ---- X--- ---- X---
+  KD  x--- --x- x--- --x-
+
+groove: Pop-Punk Verse  bpm=170
+  HH  x-x- x-x- x-x- x-x-
+  SN  ---- X--- ---- X---
+  KD  x--- --x- x-x- ----
+
+groove: Pop-Punk Chorus  bpm=170
+  CL  x-x- x-x- x-x- x-x-
+  SN  ---- X--- ---- X---
+  KD  x-x- --x- x-x- --x-
+
+groove: Hardcore Two-Step  bpm=150
+  HH  x-x- x-x- x-x- x-x-
+  SN  ---- X--- ---- X---
+  KD  x--x ---- x--x ----
+
+groove: Oi Stomp  bpm=140
+  HO  x-x- x-x- x-x- x-x-
+  SN  ---- X--- ---- X---
+  KD  x--- x--- x--- x---
+
+groove: Surf Tom Beat  bpm=160
+  T2  x-x- x-x- x-x- x-x-
+  SN  ---- X--- ---- X---
+  KD  x--- ---- x--- ----
+
+groove: Polka Punk  bpm=200
+  HH  --x- --x- --x- --x-
+  SN  --x- --x- --x- --x-
+  KD  x--- x--- x--- x---
+
+groove: Snotty Half-Time  bpm=160
+  HSO x-x- x-x- x-x- x-x-
+  SN  ---- ---- X--- ----
+  KD  x--- ---- --x- ----
+
+groove: Ride Bell Bounce  bpm=175
+  RB  x-x- x-x- x-x- x-x-
+  SN  ---- X--- ---- X---
+  KD  x--- --x- x--- --x-
+
+groove: Crust Two-Bar  bpm=165 bars=2
+  CR  x-x- x-x- x-x- x-x- | x-x- x-x- x-x- x-x-
+  SN  ---- X--- ---- X--- | ---- X--- --X- X---
+  KD  x--- --x- x--- --x- | x--- --x- x-x- ----
+
+fill: Snare 8ths Into Chorus
+  SN  X-x- X-x- X-x- X-X-
+  KD  x--- x--- x--- x---
+
+fill: 16th Snare Build
+  SN  x-x- x-x- xxxx XXXX
+  KD  x--- ---- x--- ----
+
+fill: Toms Down
+  T1  xx-- ---- ---- ----
+  T2  --xx xx-- ---- ----
+  T3  ---- --xx xxxx ----
+  SN  ---- ---- ---- XXXX
+  KD  x--- x--- x--- x---
+
+fill: Unison Hits
+  CL  x--- ---- x--- ----
+  CR  ---- ---- ---- x---
+  SN  x--- x--- x--- x---
+  KD  x--- x--- x--- x---

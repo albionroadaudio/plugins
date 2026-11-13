@@ -1,0 +1,97 @@
+# Latin & Brazilian
+genre: Latin
+defaults: bpm=120 time=4/4
+
+groove: Bossa Nova  bpm=140
+  SS  x--x --x- --x- -x--
+  CH  x-x- x-x- x-x- x-x-
+  BD  x--- --x- x--- --x-
+
+groove: Bossa Nova Ride  bpm=140
+  RD  xoxo xoxo xoxo xoxo
+  SS  x--x --x- --x- -x--
+  BD  x--- --x- x--- --x-
+  PH  ---- x--- ---- x---
+
+groove: Samba  bpm=100
+  SH  ooox ooox ooox ooox
+  SS  x-xx -x-x -xx- x-x-
+  BD  x--x x--x x--x x--x
+
+groove: Samba Kit  bpm=104
+  CH  xoxo xoxo xoxo xoxo
+  SN  -g-x g-x- gxg- x-gx
+  BD  x--x x--x x--x x--x
+
+groove: Son Clave 2-3 Salsa  bpm=180
+  CV  --x- x--- x--x --x-
+  CB  x-x- x-x- x-x- x-x-
+  MC  x--- x--- x--- x---
+  HC  ---- ---- ---- --xx
+  BD  ---- ---x ---- ---x
+
+groove: Son Clave 3-2 Salsa  bpm=180
+  CV  x--x --x- --x- x---
+  CB  x-x- x-x- x-x- x-x-
+  MC  x--- x--- x--- x---
+  HC  ---- --xx ---- --xx
+  BD  ---- ---x ---- ---x
+
+groove: Rumba Clave Songo  bpm=110
+  CV  x--x ---x --x- x---
+  HC  ---- --x- ---x x---
+  LC  ---x ---- ---- --xx
+  SN  ---- ---x ---- ---x
+  BD  ---- ---x ---- ---x
+  CB  x--- x--- x--- x---
+
+groove: Cha-Cha-Cha  bpm=120
+  CB  x--- x--- x--- x---
+  HTI ---- ---- ---- -x-x
+  GU  x-xx x-xx x-xx x-xx
+  BD  x--- ---- x--- ----
+  HC  ---- --x- ---- --x-
+
+groove: Mambo Cascara  bpm=190
+  HTI x-x- xx-x -xx- x-x-
+  CV  --x- x--- x--x --x-
+  BD  ---- ---x ---- ---x
+
+groove: Cumbia  bpm=95
+  GU  x-xx x-xx x-xx x-xx
+  SS  --x- --x- --x- --x-
+  BD  x--- ---- x--- ----
+
+groove: Bolero  bpm=80
+  HB  x-xx x-xx x-xx x-xx
+  SS  ---- ---- X--- ----
+  BD  x--- ---- ---- --x-
+
+groove: Merengue  bpm=150
+  GU  x-xx x-xx x-xx x-xx
+  SN  ---- ---- ---- -xxx
+  BD  x--- x--- x--- x---
+
+groove: Baião  bpm=95
+  TR  xoxo xoxo xoxo xoxo
+  BD  x--x ---- x--x ----
+  SS  ---- x--- ---- x--x
+
+groove: Tango  bpm=120
+  SN  X--- ---- ---- ----
+  BD  x--- x--- x--- x---
+  SS  ---- ---- --x- x---
+
+fill: Timbale Fill
+  HTI xxxx ---- xx-x ----
+  LTI ---- xxxx --x- xxXX
+  BD  x--- ---- ---- ----
+
+fill: Conga Tumbao Fill
+  HC  x-x- xx-x ---- ----
+  LC  ---- ---- xxxx XXXX
+  CV  --x- x--- ---- ----
+
+fill: Samba Surdo Break  bpm=100
+  SN  xxxx xxxx xxxx XXXX
+  BD  x--x x--x x--x x---

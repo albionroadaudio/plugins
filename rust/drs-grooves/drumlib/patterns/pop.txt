@@ -1,0 +1,68 @@
+# Pop
+genre: Pop
+defaults: bpm=110 time=4/4
+
+groove: Pop Four on the Floor  bpm=118
+  CH  x-x- x-x- x-x- x-x-
+  CL  ---- X--- ---- X---
+  BD  x--- x--- x--- x---
+
+groove: Pop Backbeat
+  CH  x-x- x-x- x-x- x-x-
+  SN  ---- X--- ---- X---
+  CL  ---- x--- ---- x---
+  BD  x--- ---- x-x- ----
+
+groove: Pop Ballad  bpm=72
+  CH  x-x- x-x- x-x- x-x-
+  SS  ---- X--- ---- X---
+  BD  x--- ---- x-x- ----
+
+groove: Ballad Chorus  bpm=72
+  RD  x-x- x-x- x-x- x-x-
+  SN  ---- X--- ---- X---
+  BD  x--- ---x x-x- ----
+
+groove: Modern Pop Half-Time  bpm=150
+  CH  x-x- x-x- x-x- x-x-
+  CL  ---- ---- X--- ----
+  BD  x--- ---- --x- ---x
+
+groove: Dance Pop 16ths  bpm=124
+  CH  xoxo xoxo xoxo xoxo
+  OH  --x- --x- --x- --x-
+  CL  ---- X--- ---- X---
+  BD  x--- x--- x--- x---
+
+groove: Indie Pop Floor Toms  bpm=120
+  FT  x-x- x-x- x-x- x-x-
+  CL  ---- X--- ---- X---
+  BD  x--- x--- x--- x---
+
+groove: Pop Shuffle  bpm=100 swing=60
+  CH  x-x- x-x- x-x- x-x-
+  SN  ---- X--- ---- X---
+  BD  x--- --x- x--- ----
+  TB  ---- x--- ---- x---
+
+groove: Tambourine Pop  bpm=112
+  TB  xoxo xoxo xoxo xoxo
+  SN  ---- X--- ---- X---
+  BD  x--- ---- x--- ----
+
+fill: Clap Build
+  CL  ---- x--- x-x- xxxx
+  BD  x--- x--- x--- x---
+
+fill: Snare Pickup
+  CH  x-x- x-x- x-x- ----
+  SN  ---- X--- ---- Xxxx
+  BD  x--- ---- x--- ----
+
+fill: Tom Fill
+  CH  x-x- x-x- ---- ----
+  SN  ---- X--- ---- ----
+  HT  ---- ---- xx-- ----
+  MT  ---- ---- --xx ----
+  FT  ---- ---- ---- xxXX
+  BD  x--- ---- x--- ----

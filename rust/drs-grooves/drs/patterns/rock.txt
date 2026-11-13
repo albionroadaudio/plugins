@@ -1,0 +1,124 @@
+# Rock — DRS Kit
+# HH = closed tip, HS = closed shank (fatter), HSO = semi-open, HO = open, HF = foot
+# T1 rack tom, T2 floor tom, T3 low floor tom. CL/CR = left/right crash (shank).
+genre: Rock
+defaults: bpm=110 time=4/4
+
+groove: Straight 8ths
+  HH  x-x- x-x- x-x- x-x-
+  SN  ---- X--- ---- X---
+  KD  x--- ---- x--- ----
+
+groove: Shank Accents  bpm=118
+  HS  X--- X--- X--- X---
+  HH  --x- --x- --x- --x-
+  SN  ---- X--- ---- X---
+  KD  x--- ---- x-x- ----
+
+groove: Syncopated Kick
+  HH  x-x- x-x- x-x- x-x-
+  SN  ---- X--- ---- X---
+  KD  x--- ---x x-x- ----
+
+groove: Classic Ride  bpm=120
+  RB  x--- x--- x--- x---
+  RD  --x- --x- --x- --x-
+  SN  ---- X--- ---- X---
+  KD  x--- --x- x--- ----
+
+groove: Four on the Floor  bpm=124
+  HH  x--- x--- x--- x---
+  HO  --x- --x- --x- --x-
+  SN  ---- X--- ---- X---
+  KD  x--- x--- x--- x---
+
+groove: Open Hat Bark  bpm=100
+  HH  x-x- x-x- x-x- x---
+  HO  ---- ---- ---- --x-
+  SN  ---- X--- ---- X---
+  KD  x--- ---- x--x ----
+
+groove: 16th Hats  bpm=96
+  HH  xoxo xoxo xoxo xoxo
+  SN  ---- X--- ---- X---
+  KD  x--- ---x x-x- ----
+
+groove: Half-Time  bpm=140
+  HH  x-x- x-x- x-x- x-x-
+  SN  ---- ---- X--- ----
+  KD  x--- ---- ---- --x-
+
+groove: Floor Tom Drive  bpm=108
+  T2  x-x- x-x- x-x- x-x-
+  SN  ---- X--- ---- X---
+  KD  x--- ---- x--- ----
+
+groove: Two-Bar Verse  bars=2
+  CL  x--- ---- ---- ---- | ---- ---- ---- ----
+  HH  --x- x-x- x-x- x-x- | x-x- x-x- x-x- x-x-
+  SN  ---- X--- ---- X--- | ---- X--- ---- X---
+  KD  x--- ---- x--- ---- | x--- ---x x-x- ----
+
+groove: Power Ballad  bpm=72
+  HH  x-x- x-x- x-x- x-x-
+  SN  ---- X--- ---- X---
+  KD  x--- ---- x-x- ----
+
+groove: Ballad Chorus Ride  bpm=72
+  RD  x-x- x-x- x-x- x-x-
+  HF  ---- x--- ---- x---
+  SN  ---- X--- ---- X---
+  KD  x--- ---x x-x- ----
+
+groove: Rock Shuffle  bpm=118
+  HH  x-x x-x x-x x-x
+  SN  --- X-- --- X--
+  KD  x-- --x x-- ---
+
+groove: Crash Ride Chorus  bpm=130
+  CR  x-x- x-x- x-x- x-x-
+  SN  ---- X--- ---- X---
+  KD  x--- ---- x-x- ----
+
+groove: Semi-Open Drive  bpm=126
+  HSO x-x- x-x- x-x- x-x-
+  SN  ---- X--- ---- X---
+  KD  x-x- ---- x-x- ----
+
+fill: Snare 16ths
+  HH  x-x- x-x- ---- ----
+  SN  ---- X--- xxxx XxXx
+  KD  x--- ---- ---- ----
+
+fill: Around the Toms
+  SN  Xxxx ---- ---- ----
+  T1  ---- Xxxx ---- ----
+  T2  ---- ---- Xxxx ----
+  T3  ---- ---- ---- XxXx
+  KD  x--- x--- x--- x---
+
+fill: Last Beat Toms
+  HH  x-x- x-x- x-x- ----
+  SN  ---- X--- ---- Xx--
+  T1  ---- ---- ---- --x-
+  T2  ---- ---- ---- ---x
+  KD  x--- ---- x--- ----
+
+fill: Triplet Toms
+  HH  x-x- x-x- ---- ----
+  SN  ---- X--- ---- ----
+  T1  --- --- Xx- ---
+  T2  --- --- --x x--
+  T3  --- --- --- -xX
+  KD  x--- ---- ---- ----
+
+fill: Unison 8ths
+  SN  ---- X-x- X-x- X-X-
+  KD  x--- -x-x -x-x -x-x
+  HH  x-x- ---- ---- ----
+
+fill: Floor Tom Pickup
+  HH  x-x- x-x- x-x- ----
+  SN  ---- X--- ---- --X-
+  T3  ---- ---- ---- XX-X
+  KD  x--- ---- x--- ----

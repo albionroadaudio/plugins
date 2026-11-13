@@ -1,0 +1,65 @@
+# Blues, Shuffle & Boogie
+# 12 steps per bar = 8th-note triplets (beat = three steps).
+genre: Blues & Shuffle
+defaults: bpm=100 time=4/4
+
+groove: Texas Shuffle
+  CH  x-x x-x x-x x-x
+  SN  --- X-- --- X--
+  BD  x-- --- x-- ---
+
+groove: Ride Shuffle  bpm=110
+  RD  x-x x-x x-x x-x
+  SN  --- X-- --- X--
+  BD  x-- --x x-- --x
+
+groove: Half-Time Shuffle  bpm=86
+  CH  x-x x-x x-x x-x
+  SN  -g- -g- Xg- -g-
+  BD  x-- --x --- -x-
+
+groove: Ghost Note Shuffle  bpm=96
+  CH  x-x x-x x-x x-x
+  SN  -g- Xg- -g- Xg-
+  BD  x-- --x x-- ---
+
+groove: Slow Blues 12/8  bpm=60
+  RD  xxx xxx xxx xxx
+  SN  --- X-- --- X--
+  BD  x-- --- x-x ---
+
+groove: Chicago Blues  bpm=120
+  CH  x-x x-x x-x x-x
+  SN  --- X-- --- X--
+  BD  x-- x-- x-- x--
+
+groove: Boogie Two-Beat  bpm=150
+  CH  x-x x-x x-x x-x
+  SN  --x X-x --x X-x
+  BD  x-- --- x-- ---
+
+groove: Straight 8 Blues Rock  bpm=120
+  CH  x-x- x-x- x-x- x-x-
+  SN  ---- X--- ---- X---
+  BD  x--- --x- x--- --x-
+
+groove: Jump Blues  bpm=170
+  RD  x-- x-x x-- x-x
+  SN  --- X-- --- X--
+  BD  x-- x-- x-- x--
+
+fill: Triplet Snare Roll
+  SN  --- --- xxx XXX
+  BD  x-- --- x-- ---
+  CH  x-x x-x --- ---
+
+fill: Shuffle Toms
+  HT  --- --- x-x ---
+  FT  --- --- --- x-X
+  SN  --- X-- --- ---
+  BD  x-- --- --- ---
+
+fill: Turnaround Stops
+  SN  X-- --- X-- X-x
+  BD  x-- --- x-- ---
+  CR  x-- --- --- ---

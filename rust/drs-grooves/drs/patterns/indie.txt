@@ -1,0 +1,112 @@
+# Indie — DRS Kit
+genre: Indie
+defaults: bpm=120 time=4/4
+
+groove: Motorik  bpm=128
+  HH  x-x- x-x- x-x- x-x-
+  SN  ---- X--- ---- X---
+  KD  x--- ---- x-x- ----
+
+groove: Dance-Punk  bpm=126
+  HH  x--- x--- x--- x---
+  HO  --x- --x- --x- --x-
+  SN  ---- X--- ---- X---
+  KD  x--- x--- x--- x---
+
+groove: Floor Tom Indie  bpm=116
+  T2  x-x- x-x- x-x- x-x-
+  SN  ---- X--- ---- X---
+  KD  x--- x--- x--- x---
+
+groove: Garage Rock  bpm=142
+  HSO x-x- x-x- x-x- x-x-
+  SN  ---- X--- ---- X---
+  KD  x-x- --x- x-x- ----
+
+groove: Shoegaze Wash  bpm=100
+  CLT x-x- x-x- x-x- x-x-
+  SN  ---- X--- ---- X---
+  KD  x--- ---- x-x- ----
+
+groove: Post-Punk 16ths  bpm=138
+  HH  xoxo xoxo xoxo xoxo
+  SN  ---- X--- ---- X---
+  KD  x--- ---- x-x- ----
+
+groove: Jangle Pop  bpm=132
+  HH  x-x- x-x- x-x- x-x-
+  HS  ---- x--- ---- x---
+  SN  ---- X--- ---- X---
+  KD  x--- --x- x--- ----
+
+groove: Rim Verse  bpm=95
+  HH  o-o- o-o- o-o- o-o-
+  XS  ---- X--- ---- X---
+  KD  x--- ---- x-x- ----
+
+groove: Indie Half-Time  bpm=150
+  HH  x-x- x-x- x-x- x-x-
+  SN  ---- ---- X--- ----
+  KD  x--- --x- ---- ----
+
+groove: Tom Tribal  bpm=110
+  T1  ---x ---- ---x ----
+  T3  x--- x-x- x--- x-x-
+  SN  ---- X--- ---- X---
+  KD  x--- x--- x--- x---
+
+groove: Indie Shuffle  bpm=120
+  HH  x-x x-x x-x x-x
+  SN  --- X-- --- X--
+  KD  x-- --- x-x ---
+
+groove: Ride Bell Verse  bpm=124
+  RB  x-x- x-x- x-x- x-x-
+  SN  ---- X--- ---- X---
+  KD  x--- ---x x--- ----
+
+groove: Disco Hats  bpm=122
+  HH  xoxo xoxo xoxo xoxo
+  HO  --x- --x- --x- --x-
+  SN  ---- X--- ---- X---
+  KD  x--- x--- x--- x---
+
+groove: Lo-Fi Bedroom  bpm=88 swing=35
+  HH  x-x- x-x- x-x- x-x-
+  XS  ---- X--- ---- X---
+  KD  x--- --x- -x-- ----
+
+groove: 7/8 Math Rock  time=7/8 bpm=140
+  HH  x-x-x-x-x-x-x-
+  SN  ----X-----X---
+  KD  x-------x-----
+
+groove: Big Chorus Crash  bpm=128
+  CL  x-x- x-x- x-x- x-x-
+  SN  ---- X--- ---- X---
+  KD  x--- x--- x--- x---
+
+fill: Tom Roll
+  SN  ---- X--- ---- ----
+  T1  ---- ---- xx-- ----
+  T2  ---- ---- --xx ----
+  T3  ---- ---- ---- xxXX
+  KD  x--- ---- x--- ----
+
+fill: Snare Build
+  SN  x-x- x-x- xxxx XXXX
+  KD  x--- x--- x--- x---
+
+fill: Stop and Hit
+  HH  x-x- x-x- ---- ----
+  SN  ---- X--- ---- --X-
+  KD  x--- ---- ---- --x-
+
+fill: Floor Tom 8ths
+  T2  x-x- x-x- x-x- XxXx
+  SN  ---- X--- ---- ----
+  KD  x--- x--- x--- x---
+
+fill: 7/8 Fill  time=7/8
+  SN  ----X-x-xxxxXX
+  KD  x-------------

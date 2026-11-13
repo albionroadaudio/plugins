@@ -1,0 +1,53 @@
+# Punk & Hardcore
+genre: Punk
+defaults: bpm=180 time=4/4
+
+groove: Straight Punk 8ths
+  CH  x-x- x-x- x-x- x-x-
+  SN  ---- X--- ---- X---
+  BD  x-x- ---- x-x- ----
+
+groove: Skank Beat  bpm=190
+  CH  x-x- x-x- x-x- x-x-
+  SN  --X- --X- --X- --X-
+  BD  x--- x--- x--- x---
+
+groove: D-Beat  bpm=170
+  CR  x-x- x-x- x-x- x-x-
+  SN  ---- X--- ---- X---
+  BD  x--- --x- x--- --x-
+
+groove: Pop-Punk  bpm=170
+  CH  x-x- x-x- x-x- x-x-
+  SN  ---- X--- ---- X---
+  BD  x--- --x- x-x- ----
+
+groove: Pop-Punk Ride Chorus  bpm=170
+  RD  x-x- x-x- x-x- x-x-
+  SN  ---- X--- ---- X---
+  BD  x-x- --x- x-x- --x-
+
+groove: Hardcore Two-Step  bpm=150
+  CH  x-x- x-x- x-x- x-x-
+  SN  ---- X--- ---- X---
+  BD  x--x ---- x--x ----
+
+groove: Oi Stomp  bpm=140
+  OH  x-x- x-x- x-x- x-x-
+  SN  ---- X--- ---- X---
+  BD  x--- x--- x--- x---
+
+fill: Snare 8ths Into Chorus
+  SN  X-x- X-x- X-x- X-X-
+  BD  x--- x--- x--- x---
+
+fill: 16th Snare Build
+  SN  x-x- x-x- xxxx XXXX
+  BD  x--- ---- x--- ----
+
+fill: Toms Down
+  HT  xx-- ---- ---- ----
+  MT  --xx xx-- ---- ----
+  FT  ---- --xx xxxx ----
+  SN  ---- ---- ---- XXXX
+  BD  x--- x--- x--- x---

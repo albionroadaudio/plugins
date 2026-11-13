@@ -1,0 +1,75 @@
+# Afrobeat, Afrobeats, Amapiano, Highlife
+genre: Afro
+defaults: bpm=110 time=4/4
+
+groove: Afrobeat
+  CH  xoxo xoxo xoxo xoxo
+  OH  ---- ---- ---- --x-
+  SN  -g-x g-g- -gx- g-g-
+  BD  x--- --x- --x- ----
+
+groove: Afrobeat Shekere  bpm=112
+  CA  x-xx x-xx x-xx x-xx
+  CH  x-x- x-x- x-x- x-x-
+  SN  ---- X--g ---- X--g
+  BD  x--- ---x x--- --x-
+
+groove: Afrobeats  bpm=104
+  SH  xoxo xoxo xoxo xoxo
+  SS  ---x --x- ---x --x-
+  CL  ---- X--- ---- X---
+  BD  x--- ---x --x- ----
+
+groove: Afrobeats Bounce  bpm=100
+  CH  x-x- x-x- x-x- x-x-
+  SS  ---x --x- ---x ----
+  CL  ---- ---- X--- ----
+  BD  x--- --x- ---- x---
+
+groove: Amapiano  bpm=113
+  SH  xoxo xoxo xoxo xoxo
+  SS  ---- --x- ---x --x-
+  CL  ---- X--- ---- X---
+  BD  x--- ---- x--- ----
+  CB  ---- ---- ---- --x-
+
+groove: Amapiano Log Drum Space  bpm=112
+  SH  oxoo oxoo oxoo oxoo
+  OH  --x- --x- --x- --x-
+  SS  ---x ---- ---x --x-
+  BD  x--- ---- ---- ----
+
+groove: Highlife  bpm=120
+  CB  x-x- xx-x -x-x x-x-
+  CH  x-x- x-x- x-x- x-x-
+  SN  ---- X--- ---- X---
+  BD  x--- --x- x--- --x-
+
+groove: Gqom  bpm=124
+  HC  ---x --x- ---x ----
+  LC  x--- ---- --x- --x-
+  CL  ---- ---- X--- ----
+  BD  x--- ---x ---- --x-
+
+groove: 12/8 Bell (Agbekor-style)  bpm=100
+  HA  x-x x-x xx- x-x
+  SH  xxx xxx xxx xxx
+  LC  x-- --- x-- ---
+  BD  x-- --- x-- ---
+
+fill: Afro Tom Fill
+  HT  ---- ---- x-x- ----
+  MT  ---- ---- -x-x x---
+  FT  ---- ---- ---- -xxx
+  SN  ---- X--- ---- ----
+  BD  x--- ---- ---- ----
+
+fill: Conga Run
+  HC  ---- ---- xxxx ----
+  LC  ---- ---- ---- xxXX
+  SN  -g-x g--- ---- ----
+  BD  x--- --x- ---- ----
+
+fill: Triplet Bell Fill
+  HA  xxx xxx xxx XXX
+  BD  x-- --- x-- ---

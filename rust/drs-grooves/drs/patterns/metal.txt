@@ -1,0 +1,100 @@
+# Metal — DRS Kit (no china on this kit: right crash shank stands in)
+genre: Metal
+defaults: bpm=160 time=4/4
+
+groove: Double Kick 16ths  bpm=150
+  RB  x--- x--- x--- x---
+  SN  ---- X--- ---- X---
+  KD  xxxx xxxx xxxx xxxx
+
+groove: Gallop  bpm=170
+  HS  x-x- x-x- x-x- x-x-
+  SN  ---- X--- ---- X---
+  KD  x-xx x-xx x-xx x-xx
+
+groove: Thrash Skank  bpm=200
+  CR  x--- x--- x--- x---
+  SN  --X- --X- --X- --X-
+  KD  x--- x--- x--- x---
+
+groove: Traditional Blast  bpm=200
+  RD  x-x- x-x- x-x- x-x-
+  SN  -x-x -x-x -x-x -x-x
+  KD  x-x- x-x- x-x- x-x-
+
+groove: Hammer Blast  bpm=190
+  CL  x-x- x-x- x-x- x-x-
+  SN  x-x- x-x- x-x- x-x-
+  KD  x-x- x-x- x-x- x-x-
+
+groove: Half-Time Breakdown  bpm=140
+  CR  x--- x--- x--- x---
+  SN  ---- ---- X--- ----
+  KD  x--x --x- -x-x --x-
+
+groove: Groove Metal  bpm=110
+  HS  x-x- x-x- x-x- x-x-
+  SN  ---- X--- ---- X---
+  KD  xx-- -xx- xx-- --xx
+
+groove: Doom  bpm=60
+  CL  x--- ---- ---- ----
+  RD  --x- x-x- x-x- x-x-
+  SN  ---- X--- ---- X---
+  KD  x--- ---- x--- ----
+
+groove: Djent Two-Bar  bars=2 bpm=120
+  CR  x--- x--- x--- x--- | x--- x--- x--- x---
+  SN  ---- ---- X--- ---- | ---- ---- X--- ----
+  KD  x-x- -x-- x-x- -x-- | x-x- -x-- x-x- ----
+
+groove: NWOBHM Ride Bell  bpm=180
+  RB  x--- x--- x--- x---
+  RD  --x- --x- --x- --x-
+  SN  ---- X--- ---- X---
+  KD  x-xx x-xx x-xx x-xx
+
+groove: Triplet Double Kick  bpm=130
+  RD  x-- x-- x-- x--
+  SN  --- X-- --- X--
+  KD  xxx xxx xxx xxx
+
+groove: Metalcore Beatdown  bpm=100
+  CR  x--- ---- x--- ----
+  CL  ---- x--- ---- x---
+  SN  ---- ---- X--- ----
+  KD  x-xx ---x -x-x x---
+
+groove: Speed Metal Polka  bpm=210
+  HS  x-x- x-x- x-x- x-x-
+  SN  --x- --x- --x- --x-
+  KD  x--- x--- x--- x---
+
+groove: Black Metal Blast Wash  bpm=220
+  CL  x-x- x-x- x-x- x-x-
+  SN  -x-x -x-x -x-x -x-x
+  KD  xxxx xxxx xxxx xxxx
+
+fill: Double Kick Snare Run
+  SN  xxxx xxxx ---- ----
+  T1  ---- ---- xxxx ----
+  T3  ---- ---- ---- XXXX
+  KD  xxxx xxxx xxxx xxxx
+
+fill: Blast Out
+  SN  ---- ---- -x-x -x-x
+  KD  x--- x--- x-x- x-x-
+  CL  x--- x--- x-x- x-x-
+
+fill: Tom Triplets
+  T1  xxx --- --- ---
+  T2  --- xxx --- ---
+  T3  --- --- xxx ---
+  SN  --- --- --- XXX
+  KD  x-x- x-x- x-x- x-x-
+
+fill: Crash Stops
+  CL  x--- ---- x--- ----
+  CR  ---- x--- ---- x-x-
+  KD  x--- x--- x--- x-x-
+  SN  x--- x--- x--- x-x-

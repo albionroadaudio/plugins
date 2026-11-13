@@ -1,0 +1,75 @@
+# House
+genre: House
+defaults: bpm=124 time=4/4
+
+groove: Classic House
+  CH  x--- x--- x--- x---
+  OH  --x- --x- --x- --x-
+  CL  ---- X--- ---- X---
+  BD  x--- x--- x--- x---
+
+groove: Deep House  bpm=120 swing=25
+  SH  oxoo oxoo oxoo oxoo
+  OH  --x- --x- --x- --x-
+  CL  ---- X--- ---- X---
+  SS  ---- ---x --x- ----
+  BD  x--- x--- x--- x---
+
+groove: Chicago Jack  bpm=126
+  CH  xoxo xoxo xoxo xoxo
+  CL  ---- X--- ---- X---
+  SN  ---- x--- ---- x--x
+  BD  x--- x--- x--- x---
+
+groove: Tech House  bpm=126
+  CH  -o-o -o-o -o-o -o-o
+  OH  --x- --x- --x- --x-
+  CL  ---- X--- ---- X---
+  SS  ---- --x- -x-- ----
+  BD  x--- x--- x--- x---
+
+groove: Afro House  bpm=122
+  SH  xoxo xoxo xoxo xoxo
+  HC  ---x --x- ---x ----
+  LC  ---- ---- --x- --x-
+  CL  ---- X--- ---- X---
+  BD  x--- x--- x--- x---
+
+groove: Garage House Shuffle  bpm=124 swing=40
+  CH  xoxo xoxo xoxo xoxo
+  OH  --x- --x- --x- --x-
+  CL  ---- X--- ---- X---
+  BD  x--- x--- x--- x---
+
+groove: Piano House Tambourine  bpm=125
+  TB  oxox oxox oxox oxox
+  OH  --x- --x- --x- --x-
+  CL  ---- X--- ---- X---
+  BD  x--- x--- x--- x---
+
+groove: Progressive House  bpm=128
+  CH  x-x- x-x- x-x- x-x-
+  OH  --x- --x- --x- --x-
+  CL  ---- X--- ---- X---
+  RD  --x- --x- --x- --x-
+  BD  x--- x--- x--- x---
+
+groove: Lo-Fi House  bpm=118 swing=30
+  CH  x-xo x-xo x-xo x-xo
+  CL  ---- X--- ---- X---
+  BD  x--- x--- x--- x--x
+
+fill: Clap Build-Up
+  CL  ---- x--- x-x- xxxx
+  BD  x--- x--- x--- x---
+  OH  --x- --x- --x- --x-
+
+fill: Kick Drop
+  OH  --x- --x- --x- --x-
+  CL  ---- X--- ---- X---
+  BD  x--- x--- ---- ----
+  SN  ---- ---- ---- xxxx
+
+fill: Snare Riser
+  SN  x-x- x-x- xxxx rrrr
+  BD  x--- x--- x--- x---

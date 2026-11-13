@@ -1,0 +1,71 @@
+# Funk
+genre: Funk
+defaults: bpm=100 time=4/4
+
+groove: Ghost Note Funk
+  CH  xoxo xoxo xoxo xoxo
+  SN  ---- X--g -g-- X--g
+  BD  x-x- ---- --x- -x--
+
+groove: Open Hat Funk
+  CH  x-x- x-x- x-x- x---
+  OH  ---- ---- ---- --x-
+  SN  ---- X--- ---g X---
+  BD  x--x --x- --x- ----
+
+groove: Linear Funk  bpm=96
+  CH  -x-x x-x- -x-x x-x-
+  SN  ---- -g-- ---- X---
+  BD  x-x- ---- x--- ---x
+  OH  ---- X--- ---- ----
+
+groove: Syncopated 16ths  bpm=104
+  CH  xoxo xoxo xoxo xoxo
+  SN  ---- X-g- -g-- X--g
+  BD  x--x --x- -x-- --x-
+
+groove: Two-Bar Funk  bars=2
+  CH  xoxo xoxo xoxo xoxo | xoxo xoxo xoxo xo-o
+  OH  ---- ---- ---- ---- | ---- ---- ---- --x-
+  SN  ---- X--g -g-- X--g | -g-- X--g -g-- X---
+  BD  x--- --x- --x- ---- | x-x- ---x --x- ----
+
+groove: Funk Shuffle  bpm=92 swing=55
+  CH  x-x- x-x- x-x- x-x-
+  SN  -g-g X-g- -g-g X-g-
+  BD  x--- --x- x-x- ----
+
+groove: Go-Go Swing  bpm=96 swing=45
+  CB  x--- x--x --x- x---
+  HC  ---- ---- --x- -x--
+  LC  ---- --x- ---- ----
+  SN  ---- X--- ---- X---
+  BD  x--- ---x x--- ----
+  CH  x-x- x-x- x-x- x-x-
+
+groove: Slow Funk  bpm=84
+  CH  x-x- x-x- x-x- x-x-
+  SN  ---- X--- -g-- X--g
+  BD  x--- ---x --x- ----
+
+groove: Fast Funk Ride  bpm=116
+  RD  x-x- x-x- x-x- x-x-
+  RB  ---- x--- ---- x---
+  SN  ---- X--g ---g X---
+  BD  x-x- ---x -x-- --x-
+
+fill: Ghost Roll
+  SN  gxgx Xggg gXgX XXXX
+  BD  x--- ---- x--- ----
+
+fill: Funky Toms
+  CH  xoxo xoxo ---- ----
+  SN  ---- X--g ---- ----
+  HT  ---- ---- x-x- ----
+  FT  ---- ---- -x-x XxXx
+  BD  x-x- ---- ---- ----
+
+fill: Open Hat Accents
+  OH  x--- x--- x-x- x-x-
+  SN  --X- --X- -X-X -XXX
+  BD  x--- x--- x--- ----

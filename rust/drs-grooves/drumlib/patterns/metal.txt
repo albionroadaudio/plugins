@@ -1,0 +1,67 @@
+# Metal
+genre: Metal
+defaults: bpm=160 time=4/4
+
+groove: Double Kick 16ths  bpm=150
+  RD  x--- x--- x--- x---
+  SN  ---- X--- ---- X---
+  BD  xxxx xxxx xxxx xxxx
+
+groove: Gallop  bpm=170
+  CH  x-x- x-x- x-x- x-x-
+  SN  ---- X--- ---- X---
+  BD  x-xx x-xx x-xx x-xx
+
+groove: Thrash Skank  bpm=200
+  CR  x--- x--- x--- x---
+  SN  --X- --X- --X- --X-
+  BD  x--- x--- x--- x---
+
+groove: Traditional Blast  bpm=200
+  RD  x-x- x-x- x-x- x-x-
+  SN  -x-x -x-x -x-x -x-x
+  BD  x-x- x-x- x-x- x-x-
+
+groove: Hammer Blast  bpm=190
+  CR  x-x- x-x- x-x- x-x-
+  SN  x-x- x-x- x-x- x-x-
+  BD  x-x- x-x- x-x- x-x-
+
+groove: Half-Time Breakdown  bpm=140
+  CN  x--- x--- x--- x---
+  SN  ---- ---- X--- ----
+  BD  x--x --x- -x-x --x-
+
+groove: Groove Metal  bpm=110
+  CH  x-x- x-x- x-x- x-x-
+  SN  ---- X--- ---- X---
+  BD  xx-- -xx- xx-- --xx
+
+groove: Doom  bpm=60
+  RD  x-x- x-x- x-x- x-x-
+  SN  ---- X--- ---- X---
+  BD  x--- ---- x--- ----
+  CR  x--- ---- ---- ----
+
+groove: Djent Polyrhythm  bars=2 bpm=120
+  CN  x--- x--- x--- x--- | x--- x--- x--- x---
+  SN  ---- ---- X--- ---- | ---- ---- X--- ----
+  BD  x-x- -x-- x-x- -x-- | x-x- -x-- x-x- ----
+
+fill: Double Kick Snare Run
+  SN  xxxx xxxx ---- ----
+  HT  ---- ---- xxxx ----
+  FT  ---- ---- ---- XXXX
+  BD  xxxx xxxx xxxx xxxx
+
+fill: Blast Out
+  SN  ---- ---- -x-x -x-x
+  BD  x--- x--- x-x- x-x-
+  CR  x--- x--- x-x- x-x-
+
+fill: Tom Triplets
+  HT  xxx --- --- ---
+  MT  --- xxx --- ---
+  FT  --- --- xxx ---
+  SN  --- --- --- XXX
+  BD  x-x- x-x- x-x- x-x-

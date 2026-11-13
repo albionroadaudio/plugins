@@ -1,0 +1,50 @@
+# Synthwave, 80s Pop & New Wave
+genre: Synthwave & 80s
+defaults: bpm=110 time=4/4
+
+groove: Synthwave Drive  bpm=118
+  CH  x-x- x-x- x-x- x-x-
+  SN  ---- X--- ---- X---
+  BD  x--- x--- x--- x---
+
+groove: Big 80s Snare  bpm=96
+  CH  x-x- x-x- x-x- x-x-
+  SN  ---- X--- ---- X---
+  BD  x--- ---- x-x- ----
+
+groove: New Wave 16ths  bpm=130
+  CH  xxxx xxxx xxxx xxxx
+  SN  ---- X--- ---- X---
+  BD  x--- --x- x--- --x-
+
+groove: Darkwave  bpm=124
+  CH  x-x- x-x- x-x- x-x-
+  SN  ---- X--- ---- X---
+  BD  x--x x--- x--x x---
+
+groove: Retro Funk Pop  bpm=112
+  CH  xoxo xoxo xoxo xoxo
+  CL  ---- X--- ---- X---
+  SN  ---- X--- ---- X---
+  BD  x--- --x- x--- ---x
+
+groove: Outrun Gallop  bpm=128
+  CH  x-x- x-x- x-x- x-x-
+  SN  ---- X--- ---- X---
+  BD  x-xx x-xx x-xx x-xx
+
+groove: Slow Synth Ballad  bpm=80
+  CH  x-x- x-x- x-x- x-x-
+  SN  ---- X--- ---- X---
+  BD  x--- ---- x--- ----
+
+fill: Gated Tom Fill
+  HT  ---- ---- x-x- ----
+  MT  ---- ---- ---- x-x-
+  LT  ---- ---- -x-x -x-x
+  SN  ---- X--- ---- ----
+  BD  x--- ---- ---- ----
+
+fill: Snare Flam Run
+  SN  ---- X--- --xx XXXX
+  BD  x--- ---- x--- ----

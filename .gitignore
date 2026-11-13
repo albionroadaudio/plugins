@@ -1,0 +1,20 @@
+# Build output (rebuilt from source)
+build/
+build-*/
+target/
+releases/dist/
+releases/staging/
+__pycache__/
+
+# Local notes for Claude Code (not published)
+CLAUDE.md
+.claude/
+
+# Editor / OS clutter
+.cache/
+compile_commands.json
+.vscode/
+.idea/
+*.swp
+*~
+.DS_Store

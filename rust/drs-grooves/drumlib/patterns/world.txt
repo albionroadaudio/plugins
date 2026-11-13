@@ -1,0 +1,74 @@
+# World: Middle East, India, Caribbean, Europe
+genre: World
+defaults: bpm=100 time=4/4
+
+groove: Maqsum  bpm=100
+  BD  x--- ---- x--- ----
+  SS  ---- x-x- ---- x---
+  HC  ---- ---- ---- ---x
+
+groove: Baladi  bpm=90
+  BD  x--- x--- ---- x---
+  SS  ---- ---- x-x- ---x
+  HC  --x- --x- ---- ----
+
+groove: Ayoub (2/4)  bpm=110 time=2/4
+  BD  x--x ----
+  SS  ---- x---
+
+groove: Saidi  bpm=100
+  BD  x--- --x- x--- ----
+  SS  ---- x--- ---- x---
+  HC  --x- ---- --x- --x-
+
+groove: Teental Feel  bpm=90
+  LC  x--- x--- x--- x---
+  HB  -x-x -x-x -x-x -x-x
+  HC  --x- --x- --x- ----
+
+groove: Bhangra Dhol  bpm=100
+  LC  x--x --x- x--x --x-
+  HB  -x-x x-x- -x-x x-x-
+  CL  ---- X--- ---- X---
+  BD  x--- ---- x--- ----
+
+groove: Soca  bpm=150
+  CH  x-x- x-x- x-x- x-x-
+  CB  -x-x -x-x -x-x -x-x
+  SN  ---- X--- ---- X---
+  BD  x--- x--- x--- x---
+
+groove: Calypso  bpm=110
+  CB  x--x --x- x--x --x-
+  SS  ---- X--- ---- X---
+  BD  x--- ---x x--- ---x
+
+groove: Polka  bpm=120 time=2/4
+  SN  ---- x---
+  BD  x--- ----
+  CH  --x- --x-
+
+groove: Klezmer Bulgar  bpm=120
+  SN  x--x --x- x--x --x-
+  BD  x--- ---- x--- ----
+  CH  --x- x-x- --x- x-x-
+
+groove: Flamenco Bulerías (12)  bpm=200 time=12/8
+  CL  --X --X -X- X-X
+  SS  x-x -x- x-x -x-
+  BD  x-- --- --- ---
+
+groove: Celtic Reel  bpm=110
+  SN  x-x- X-x- x-x- X-x-
+  BD  x--- ---- x--- ----
+  TB  -x-x -x-x -x-x -x-x
+
+fill: Darbuka Roll
+  SS  ---- x-x- xxxx rrRR
+  BD  x--- ---- x--- ----
+  HC  ---- ---- ---- ---X
+
+fill: Dhol Break
+  LC  x-x- x-x- xxxx XXXX
+  HB  -x-x -x-x ---- ----
+  BD  x--- ---- x--- ----

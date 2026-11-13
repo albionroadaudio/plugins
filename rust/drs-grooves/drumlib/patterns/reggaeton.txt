@@ -1,0 +1,52 @@
+# Reggaeton, Dembow & Dancehall
+genre: Reggaeton & Dancehall
+defaults: bpm=95 time=4/4
+
+groove: Dembow
+  CH  x-x- x-x- x-x- x-x-
+  SN  ---x --x- ---x --x-
+  BD  x--- x--- x--- x---
+
+groove: Dembow Hats 16th
+  CH  xoxo xoxo xoxo xoxo
+  SN  ---x --x- ---x --x-
+  CL  ---x --x- ---x --x-
+  BD  x--- x--- x--- x---
+
+groove: Perreo  bpm=92
+  CH  x-x- x-x- x-x- x-x-
+  SN  ---x --x- ---x --x-
+  BD  x--- x--- x--- x---
+  TB  -x-x -x-x -x-x -x-x
+
+groove: Dominican Dembow  bpm=120
+  CH  xxxx xxxx xxxx xxxx
+  SN  ---x --x- ---x --x-
+  BD  x--- x--- x--- x---
+
+groove: Dancehall  bpm=100
+  CH  x-x- x-x- x-x- x-x-
+  SN  ---- X--- ---- X---
+  BD  x--- --x- x--- --x-
+
+groove: Modern Dancehall  bpm=98
+  SH  xoxo xoxo xoxo xoxo
+  CL  ---x --x- ---x --x-
+  BD  x--- ---- x--- ----
+  SS  ---- ---- --x- ---x
+
+groove: Moombahton  bpm=108
+  CH  x-x- x-x- x-x- x-x-
+  SN  ---x --x- ---x --x-
+  OH  --x- --x- --x- --x-
+  BD  x--- x--- x--- x---
+
+fill: Dembow Snare Roll
+  SN  ---x --x- xxxx XXXX
+  BD  x--- x--- x--- x---
+
+fill: Timbale Break
+  HTI ---- ---- xx-x -x--
+  LTI ---- ---- --x- x-xx
+  SN  ---x --x- ---- ----
+  BD  x--- x--- x--- x---

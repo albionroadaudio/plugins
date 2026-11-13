@@ -1,0 +1,23 @@
+[package]
+name = "crash_eq"
+version = "0.1.0"
+edition = "2021"
+license = "AGPL-3.0-or-later"
+authors = ["Albion Road Audio"]
+homepage = "https://www.albionroadaudio.co.uk"
+description = "Albion Road Audio Crash EQ"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+
+[dependencies]
+eqcore = { path = "../eqcore" }
+nih_plug = { git = "https://github.com/robbert-vdh/nih-plug.git" }
+
+[features]
+standalone = ["nih_plug/standalone"]
+
+[[bin]]
+name = "crash_eq_standalone"
+path = "src/main.rs"
+required-features = ["standalone"]

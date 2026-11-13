@@ -1,0 +1,71 @@
+# Techno
+genre: Techno
+defaults: bpm=130 time=4/4
+
+groove: Straight Techno
+  CH  xoxo xoxo xoxo xoxo
+  OH  --x- --x- --x- --x-
+  BD  x--- x--- x--- x---
+
+groove: Rolling Techno  bpm=132
+  CH  -o-o -o-o -o-o -o-o
+  RD  --x- --x- --x- --x-
+  CL  ---- X--- ---- X---
+  BD  x--- x--- x--- x--g
+
+groove: Minimal  bpm=126
+  CH  --x- --x- --x- --x-
+  SS  ---- --x- ---x ----
+  SH  oooo oooo oooo oooo
+  BD  x--- x--- x--- x---
+
+groove: Detroit  bpm=128
+  CH  xoxo xoxo xoxo xoxo
+  OH  --x- --x- --x- --x-
+  CL  ---- X--- ---- X---
+  CB  ---- ---- --x- ----
+  BD  x--- x--- x--- x---
+
+groove: Hard Techno  bpm=145
+  CH  xxxx xxxx xxxx xxxx
+  OH  --x- --x- --x- --x-
+  CL  ---- X--- ---- X---
+  BD  x--- x--- x--- x-x-
+
+groove: Industrial  bpm=138
+  CH  x-x- x-x- x-x- x-x-
+  SN  ---- X--- ---- X--x
+  CL  ---- X--- ---- X---
+  BD  x--x x--- x--x x---
+
+groove: Dub Techno  bpm=120
+  CH  -o-- -o-- -o-- -o--
+  OH  --x- --x- --x- --x-
+  SS  ---- ---- ---- --x-
+  BD  x--- x--- x--- x---
+
+groove: Broken Techno  bpm=134
+  CH  xoxo xoxo xoxo xoxo
+  CL  ---- X--- ---- X---
+  BD  x--- --x- x--- ---x
+
+groove: Acid Pulse  bpm=135
+  CH  x-x- x-x- x-x- x-x-
+  OH  --x- --x- --x- --x-
+  CL  ---- X--- ---- X---
+  BD  x--- x--- x--- x---
+  CB  ---x ---x ---x ---x
+
+fill: Snare Roll
+  SN  ---- x-x- xxxx rrrr
+  BD  x--- x--- x--- x---
+
+fill: Tom Break
+  LT  x--- --x- ---- ----
+  MT  ---- ---- x--- --x-
+  HT  ---- ---- ---- x-x-
+  BD  x--- x--- x--- ----
+
+fill: Breakdown Hat
+  CH  xxxx xxxx xxxx xxxx
+  OH  --x- --x- --x- --x-

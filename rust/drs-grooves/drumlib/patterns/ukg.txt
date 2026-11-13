@@ -1,0 +1,49 @@
+# UK Garage, 2-Step & Grime
+genre: UK Garage
+defaults: bpm=132 time=4/4 swing=30
+
+groove: 2-Step
+  CH  -o-o -o-o -o-o -o-o
+  OH  --x- --x- --x- --x-
+  SN  ---- X--- ---- X---
+  BD  x--- ---- --x- ---x
+
+groove: 2-Step Two-Bar  bars=2
+  CH  xoxo xoxo xoxo xoxo | xoxo xoxo xoxo xoxo
+  SN  ---- X--- ---- X--- | ---- X--- ---- X---
+  SS  ---- ---x ---- ---- | ---- ---x --x- ----
+  BD  x--- ---- --x- ---- | x--- ---x ---- --x-
+
+groove: Speed Garage
+  CH  xoxo xoxo xoxo xoxo
+  OH  --x- --x- --x- --x-
+  CL  ---- X--- ---- X---
+  BD  x--- x--- x--- x---
+
+groove: 4x4 Garage Organ Groove  bpm=130
+  SH  oxoo oxoo oxoo oxoo
+  OH  --x- --x- --x- --x-
+  SN  ---- X--- ---- X---
+  SS  ---x ---- -x-- ----
+  BD  x--- x--- x--- x---
+
+groove: Grime  bpm=140 swing=0
+  CH  x-x- x-x- x-x- x-x-
+  SN  ---- ---- X--- ----
+  CL  ---- ---- X--- ----
+  BD  x--- --x- ---- -x--
+
+groove: Bassline  bpm=136 swing=20
+  CH  -o-o -o-o -o-o -o-o
+  OH  --x- --x- --x- --x-
+  CL  ---- X--- ---- X---
+  BD  x--- x--- x--- x---
+  SS  ---x ---- ---x ----
+
+fill: Garage Snare Skips
+  SN  ---- X--x -x-- XxXx
+  BD  x--- ---- --x- ----
+
+fill: Rim Shuffle
+  SS  -x-x x-x- xxxx xxxx
+  BD  x--- ---- --x- ----

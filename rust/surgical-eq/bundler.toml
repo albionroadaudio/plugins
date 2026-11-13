@@ -1,0 +1,14 @@
+[kick_eq]
+name = "Albion Road Audio Kick EQ"
+
+[snare_eq]
+name = "Albion Road Audio Snare EQ"
+
+[toms_eq]
+name = "Albion Road Audio Toms EQ"
+
+[crash_eq]
+name = "Albion Road Audio Crash EQ"
+
+[hihat_eq]
+name = "Albion Road Audio Hi-Hat EQ"

@@ -1,0 +1,46 @@
+# Trance, Psytrance & Hardstyle
+genre: Trance
+defaults: bpm=138 time=4/4
+
+groove: Uplifting Trance
+  CH  x-x- x-x- x-x- x-x-
+  OH  --x- --x- --x- --x-
+  CL  ---- X--- ---- X---
+  BD  x--- x--- x--- x---
+
+groove: Trance 16th Hats  bpm=136
+  CH  xoxo xoxo xoxo xoxo
+  OH  --x- --x- --x- --x-
+  CL  ---- X--- ---- X---
+  RD  --x- --x- --x- --x-
+  BD  x--- x--- x--- x---
+
+groove: Psytrance  bpm=145
+  CH  -ox- -ox- -ox- -ox-
+  OH  --x- --x- --x- --x-
+  CL  ---- X--- ---- X---
+  BD  x--- x--- x--- x---
+
+groove: Goa Shaker  bpm=142
+  SH  xoxo xoxo xoxo xoxo
+  OH  --x- --x- --x- --x-
+  SN  ---- X--- ---- X---
+  BD  x--- x--- x--- x---
+
+groove: Hardstyle  bpm=150
+  OH  --x- --x- --x- --x-
+  CL  ---- X--- ---- X---
+  BD  X--- X--- X--- X---
+
+groove: Breakbeat Trance  bpm=135
+  CH  x-x- x-x- x-x- x-x-
+  SN  ---- X--- ---- X---
+  BD  x--- ---- --x- ---x
+
+fill: Snare Build 16ths
+  SN  xxxx xxxx xxxx xxxx
+  BD  x--- x--- x--- x---
+
+fill: Snare Build 32nds
+  SN  rrrr rrrr RRRR QQQQ
+  BD  x--- x--- x--- x---

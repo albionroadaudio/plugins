@@ -1,0 +1,15 @@
+[package]
+name = "drumlib"
+version = "0.1.0"
+edition = "2021"
+license = "AGPL-3.0-or-later"
+authors = ["Albion Road Audio"]
+homepage = "https://www.albionroadaudio.co.uk"
+description = "Genre drum pattern library, parser and MIDI file writer"
+
+[lib]
+path = "src/lib.rs"
+
+[[bin]]
+name = "drumlib-export"
+path = "src/bin/export.rs"

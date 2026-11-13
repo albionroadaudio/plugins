@@ -1,0 +1,12 @@
+[package]
+name = "eqcore"
+version = "0.1.0"
+edition = "2021"
+license = "AGPL-3.0-or-later"
+authors = ["Albion Road Audio"]
+homepage = "https://www.albionroadaudio.co.uk"
+description = "Albion Road Audio surgical EQ series: shared DSP, parameters and GUI"
+
+[dependencies]
+nih_plug = { git = "https://github.com/robbert-vdh/nih-plug.git" }
+nih_plug_egui = { git = "https://github.com/robbert-vdh/nih-plug.git" }

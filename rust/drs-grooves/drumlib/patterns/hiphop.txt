@@ -1,0 +1,72 @@
+# Hip-Hop: boom bap, lo-fi, west coast
+genre: Hip-Hop
+defaults: bpm=90 time=4/4
+
+groove: Boom Bap  swing=20
+  CH  x-x- x-x- x-x- x-x-
+  SN  ---- X--- ---- X---
+  BD  x--- ---x --x- ----
+
+groove: Boom Bap Two-Bar  bars=2 swing=20
+  CH  x-x- x-x- x-x- x-x- | x-x- x-x- x-x- x-x-
+  SN  ---- X--- ---- X--- | ---- X--- ---- X---
+  BD  x--- ---- --x- ---- | x--- ---x --x- -x--
+
+groove: Dusty Lo-Fi  bpm=78 swing=45
+  CH  x-x- x-x- x-x- x-x-
+  SN  ---- X--- ---- X--g
+  BD  x--- ---- -xx- ----
+
+groove: Lo-Fi Rim  bpm=74 swing=50
+  CH  xox- xox- xox- xox-
+  SS  ---- X--- ---- X---
+  BD  x--- --x- ---x ----
+
+groove: Golden Era 16ths  bpm=94 swing=15
+  CH  xoxo xoxo xoxo xo--
+  OH  ---- ---- ---- --x-
+  SN  ---- X--- ---- X---
+  BD  x--- --x- x--x ----
+
+groove: West Coast Bounce  bpm=92
+  CH  xoxo xoxo xoxo xoxo
+  SN  ---- X--- ---- X---
+  CL  ---- X--- ---- X---
+  BD  x--- --x- x-x- ---x
+
+groove: Jazzy Hip-Hop  bpm=88 swing=40
+  RD  x-x- x-x- x-x- x-x-
+  SS  ---- X--- ---- X---
+  BD  x--- ---x x--- --x-
+
+groove: East Coast Hard  bpm=96
+  CH  x-x- x-x- x-x- x-x-
+  SN  ---- X--- ---- X---
+  BD  xx-- ---- --x- --x-
+
+groove: Half-Time Hip-Hop  bpm=80
+  CH  xoxo xoxo xoxo xoxo
+  SN  ---- ---- X--- ----
+  BD  x--- --x- ---- -x--
+
+groove: Old School Electro Rap  bpm=104
+  CH  x-x- x-x- x-x- x-x-
+  CL  ---- X--- ---- X---
+  BD  x--- ---- --x- ----
+  CB  ---- --x- ---- ---x
+
+fill: Snare Stutter
+  CH  x-x- x-x- ---- ----
+  SN  ---- X--- --xx XxXx
+  BD  x--- ---x ---- ----
+
+fill: Kick Drop
+  CH  x-x- x-x- x-x- ----
+  SN  ---- X--- ---- ----
+  BD  ---- ---- ---- ----
+  CL  ---- ---- ---- X---
+
+fill: Scratch-Style Roll
+  SN  ---- X--- ---- rrRR
+  BD  x--- ---x x--- ----
+  CH  x-x- x-x- x-x- ----

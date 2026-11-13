@@ -1,0 +1,7 @@
+[workspace]
+resolver = "2"
+members = ["drumlib", "drs", "xtask"]
+
+[profile.release]
+lto = "thin"
+strip = "symbols"
