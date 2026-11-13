@@ -76,6 +76,8 @@ struct Kit
     std::vector<std::unique_ptr<std::atomic<float>>> hit;      // per instrument, last velocity
     std::vector<std::unique_ptr<std::atomic<float>>> instrumentGain;   // DRUMS mixer (message -> audio)
     std::vector<std::unique_ptr<std::atomic<float>>> instrumentGate;   // gate threshold vs. hit peak, 0 = off
+    std::vector<std::unique_ptr<std::atomic<float>>> instrumentBleed;  // 0..1, x the kit Bleed, on this drum's bleed mics
+    std::vector<std::unique_ptr<std::atomic<float>>> instrumentTune;   // semitones, added to the kit Tune
     std::vector<std::unique_ptr<std::atomic<float>>> instrumentMeter;  // hit level after gain (audio -> UI)
 
     int numChannels() const noexcept { return (int) channelNames.size(); }

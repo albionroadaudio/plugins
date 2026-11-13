@@ -329,6 +329,8 @@ std::unique_ptr<Kit> KitLoader::load (const juce::File& kitFile, juce::File midi
         kit->hit.push_back (std::make_unique<std::atomic<float>> (0.0f));
         kit->instrumentGain.push_back (std::make_unique<std::atomic<float>> (1.0f));
         kit->instrumentGate.push_back (std::make_unique<std::atomic<float>> (0.0f));
+        kit->instrumentBleed.push_back (std::make_unique<std::atomic<float>> (1.0f));
+        kit->instrumentTune.push_back (std::make_unique<std::atomic<float>> (0.0f));
         kit->instrumentMeter.push_back (std::make_unique<std::atomic<float>> (0.0f));
     }
 

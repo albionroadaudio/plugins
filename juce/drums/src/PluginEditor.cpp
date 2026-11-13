@@ -6,10 +6,10 @@ using namespace albion;
 namespace
 {
     constexpr int baseWidth  = 1120;
-    constexpr int baseHeight = 860;
+    constexpr int baseHeight = 960;
     constexpr int headerH    = 58;
     constexpr int infoH      = 40;
-    constexpr int mixerH     = 380;   // tall faders
+    constexpr int mixerH     = 460;   // tall faders, plus Gate / Bleed / Tune on drum strips
     constexpr int stripW     = 74;
     constexpr int drumStripW = 70;
 
@@ -69,7 +69,8 @@ AlbionDrumsAudioProcessorEditor::AlbionDrumsAudioProcessorEditor (AlbionDrumsAud
     micsTab.onClick  = [this] { setMixerView (false); };
     drumsTab.onClick = [this] { setMixerView (true); };
     micsTab.setTooltip ("Mixer per microphone channel (pan, level, mute, solo)");
-    drumsTab.setTooltip ("Mixer per drum: each fader sets that drum's level in every mic, bleed included");
+    drumsTab.setTooltip ("Mixer per drum: gate, bleed and tune for each drum, and a fader that sets "
+                         "its level in every mic, bleed included");
     showDrums = (bool) drums.getUiState().getProperty ("drumsView", false);
 
     mixerView.setViewedComponent (&mixerContent, false);
@@ -81,7 +82,10 @@ AlbionDrumsAudioProcessorEditor::AlbionDrumsAudioProcessorEditor (AlbionDrumsAud
     setupKnob (knobs[kDynamics], ids::dynamics, "DYNAMICS");
     setupKnob (knobs[kBleed],    ids::bleed,    "BLEED");
     setupKnob (knobs[kHumanize], ids::humanize, "HUMANIZE");
-    knobs[kBleed].slider.setTooltip ("Level of mic bleed (non-main channels) for each drum");
+    knobs[kBleed].slider.setTooltip ("Master mic bleed (non-main channels) for the whole kit; "
+                                     "each drum's BLEED knob in the DRUMS mixer scales it further");
+    knobs[kTune].slider.setTooltip ("Pitch of the whole kit in semitones; each drum's TUNE knob "
+                                    "in the DRUMS mixer adds to it");
 
     drums.addChangeListener (this);
 

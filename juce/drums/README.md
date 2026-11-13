@@ -17,15 +17,20 @@ without long loads.
 3. **Pads**: one per mapped note. Click to audition (top of a pad = hard hit). Pads flash on MIDI hits.
 4. **Kit** knobs:
    - **Master**: defaults to -6 dB, because kits sum many mics.
-   - **Tune**: ±12 semitones.
+   - **Tune**: ±12 semitones for the whole kit (each drum's own **TUNE** adds to it).
    - **Dynamics**: extra velocity → level.
-   - **Bleed**: level of non-main mics, for kits that mark main channels.
+   - **Bleed**: master level of non-main mics, for kits that mark main channels (each drum's own
+     **BLEED** scales it further).
    - **Humanize**: DrumGizmo's humanizer. 0 = off, 100% = DrumGizmo's defaults.
 5. **Mixer**:
    - **MICS**: level, pan, mute and solo per microphone. Stereo pairs (`OHL/OHR`, `Room-L/Room-R`, …)
      are panned hard left/right automatically.
-   - **DRUMS**: a fader, mute, solo and **GATE** knob per instrument. A drum's fader scales that drum
-     in *every* mic, bleed included, so the room stays coherent.
+   - **DRUMS**: per instrument, a fader, mute, solo and **GATE**, **BLEED** and **TUNE** knobs.
+     A drum's fader scales that drum in *every* mic, bleed included, so the room stays coherent.
+     **BLEED** (0–100 %, default 100 %) sets how much of that drum the *other* mics pick up, e.g. the
+     snare in the overheads and kick mic, on top of the kit Bleed knob. Some kits' bleed mics are partly
+     out of phase with the close mic, so turning bleed down can thin a drum as well as dry it up.
+     **TUNE** (±12 semitones, default 0) re-pitches just that drum, on top of the kit Tune knob.
      **GATE** cuts each hit once its level has fallen the set number of dB below that hit's own loudest point.
      - The level is RMS of the drum's main mics (10 ms attack, 60 ms release), so the reference is the body
        of the drum, not its transient click.
@@ -83,7 +88,8 @@ cmake --build build --target AlbionDrums_CLAP AlbionDrums_VST3 AlbionDrums_Stand
 ```
 
 Dev tool: `-DALBION_BUILD_TOOLS=ON` builds `AlbionDrumsSnapshot <drumkit.xml> <out.png> [w h [drums]]`,
-which renders the UI offscreen with a kit loaded.
+which renders the UI offscreen with a kit loaded, and `AlbionDrumsEngineTest <drumkit.xml>`, which checks
+the per-drum Bleed and Tune against a real kit (e.g. DRSKit_full).
 
 ## IDs (don't change after release)
 

@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.22)
-project(AlbionDrums VERSION 0.1.0 LANGUAGES C CXX)
+project(AlbionDrums VERSION 0.2.0 LANGUAGES C CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -97,4 +97,10 @@ if(ALBION_BUILD_TOOLS)
     target_include_directories(AlbionDrumsSnapshot PRIVATE $<TARGET_PROPERTY:AlbionDrums,INCLUDE_DIRECTORIES>)
     target_compile_definitions(AlbionDrumsSnapshot PRIVATE $<TARGET_PROPERTY:AlbionDrums,COMPILE_DEFINITIONS>)
     target_link_libraries(AlbionDrumsSnapshot PRIVATE AlbionDrums)
+
+    # Engine check for the DRUMS mixer's per-drum Bleed and Tune (needs a kit on disk).
+    add_executable(AlbionDrumsEngineTest tools/EngineTest.cpp)
+    target_include_directories(AlbionDrumsEngineTest PRIVATE $<TARGET_PROPERTY:AlbionDrums,INCLUDE_DIRECTORIES>)
+    target_compile_definitions(AlbionDrumsEngineTest PRIVATE $<TARGET_PROPERTY:AlbionDrums,COMPILE_DEFINITIONS>)
+    target_link_libraries(AlbionDrumsEngineTest PRIVATE AlbionDrums)
 endif()

@@ -69,5 +69,6 @@ private:
     std::array<float, 4096> envelope {};
     std::array<std::int32_t, 4096> interpRel {};
     std::array<float, 4096> interpFrac {};
-    std::array<float, 4096 * 5 + 8> decodeScratch {};   // up to ~4.4x read speed (96k kit, +12 st)
+    std::array<float, 4096 * 5 + 8> decodeScratch {};   // up to ~4.4x read speed (96k kit, +12 st); faster reads
+                                                         // (kit + drum tune above that) use the uncached path
 };

@@ -127,28 +127,39 @@ MixerStrip::MixerStrip (juce::ValueTree channelState, bool showPan, float uiScal
     if (hasPan)
         addAndMakeVisible (pan);
 
-    // per-hit gate (drum strips only): Off .. -3 dB below each hit's own peak
+    // drum strips only: per-hit gate, this drum's bleed and tune
     if (! hasPan)
     {
-        if (! state.hasProperty ("gate"))
-            state.setProperty ("gate", -60.0, nullptr);
-        gate.setSliderStyle (juce::Slider::RotaryHorizontalVerticalDrag);
-        gate.setRotaryParameters (juce::degreesToRadians (225.0f), juce::degreesToRadians (495.0f), true);
-        gate.setTextBoxStyle (juce::Slider::NoTextBox, true, 0, 0);
+        // Gate: Off .. -12 dB below each hit's own peak
         gate.setRange (-60.0, -12.0, 0.5);
         gate.setSkewFactorFromMidPoint (-30.0);
-        gate.setDoubleClickReturnValue (true, -60.0);
-        gate.getValueObject().referTo (state.getPropertyAsValue ("gate", nullptr));
+        setupDrumKnob (gate, "gate", -60.0);
         gate.textFromValueFunction = [] (double v)
         {
             return v <= -59.95 ? juce::String ("Off") : juce::String (v, v > -10.0 ? 1 : 0) + " dB";
         };
-        gate.setPopupDisplayEnabled (true, true, nullptr);
         gate.setTooltip ("Gate: cuts each hit once its level (RMS of the drum's main mics) has fallen this many dB "
                          "below that hit's own loudest point, then closes over 20 ms. Relative to each hit, not dBFS, "
                          "so soft and hard hits are shortened alike. Double-click for Off.");
         gate.onValueChange = [this] { repaint (gateText); };
-        addAndMakeVisible (gate);
+
+        // Bleed: this drum's level in the other drums' mics, x the kit Bleed knob
+        bleed.setRange (0.0, 100.0, 1.0);
+        setupDrumKnob (bleed, "bleed", 100.0);
+        bleed.textFromValueFunction = [] (double v) { return juce::String (juce::roundToInt (v)) + " %"; };
+        bleed.setTooltip ("Bleed: how much of this drum the other mics pick up (e.g. the snare in the overheads "
+                          "and kick mic). Multiplies the kit's BLEED knob. Double-click for 100 %.");
+        bleed.onValueChange = [this] { repaint (bleedText); };
+
+        // Tune: semitones on top of the kit Tune knob
+        tune.setRange (-12.0, 12.0, 0.1);
+        setupDrumKnob (tune, "tune", 0.0);
+        tune.textFromValueFunction = [] (double v)
+        {
+            return std::abs (v) < 0.05 ? juce::String ("0 st") : (v > 0 ? "+" : "") + juce::String (v, 1) + " st";
+        };
+        tune.setTooltip ("Tune: pitch of this drum in semitones, added to the kit's TUNE knob. Double-click for 0.");
+        tune.onValueChange = [this] { repaint (tuneText); };
     }
 
     for (auto* b : { &mute, &solo })
@@ -181,6 +192,26 @@ MixerStrip::MixerStrip (juce::ValueTree channelState, bool showPan, float uiScal
     fader.onValueChange();
 }
 
+void MixerStrip::setupDrumKnob (juce::Slider& s, const juce::Identifier& property, double defaultValue)
+{
+    if (! state.hasProperty (property))
+        state.setProperty (property, defaultValue, nullptr);
+    s.setSliderStyle (juce::Slider::RotaryHorizontalVerticalDrag);
+    s.setRotaryParameters (juce::degreesToRadians (225.0f), juce::degreesToRadians (495.0f), true);
+    s.setTextBoxStyle (juce::Slider::NoTextBox, true, 0, 0);
+    s.setDoubleClickReturnValue (true, defaultValue);
+    s.getValueObject().referTo (state.getPropertyAsValue (property, nullptr));
+    s.setPopupDisplayEnabled (true, true, nullptr);
+    addAndMakeVisible (s);
+}
+
+void MixerStrip::drawKnobText (juce::Graphics& g, juce::Rectangle<int> r, const juce::String& text, bool active)
+{
+    g.setColour (active ? colours::accent : colours::muted.withAlpha (0.7f));
+    g.setFont (font (9.5f * scale, true));
+    g.drawFittedText (text, r, juce::Justification::centred, 1, 0.8f);
+}
+
 void MixerStrip::setMeter (float peak) noexcept
 {
     // fast attack, ~300 ms visual release, short peak hold
@@ -203,12 +234,13 @@ void MixerStrip::paint (juce::Graphics& g)
 
     if (! hasPan)
     {
-        const bool on = gate.getValue() > -59.95;
-        g.setColour (on ? colours::accent : colours::muted.withAlpha (0.7f));
-        g.setFont (font (10.0f * scale, true));
-        g.drawText (on ? "GATE " + gate.getTextFromValue (gate.getValue()).upToFirstOccurrenceOf (" ", false, false)
-                       : juce::String ("GATE OFF"),
-                    gateText, juce::Justification::centred, false);
+        // highlighted when moved away from the default
+        const auto gv = gate.getValue(), bv = bleed.getValue(), tv = tune.getValue();
+        drawKnobText (g, gateText, gv > -59.95 ? "GATE " + gate.getTextFromValue (gv).upToFirstOccurrenceOf (" ", false, false)
+                                               : juce::String ("GATE OFF"), gv > -59.95);
+        drawKnobText (g, bleedText, "BLEED " + juce::String (juce::roundToInt (bv)) + "%", bv < 99.5);
+        drawKnobText (g, tuneText, "TUNE " + tune.getTextFromValue (tv).upToFirstOccurrenceOf (" ", false, false),
+                      std::abs (tv) >= 0.05);
     }
 
     // meter next to the fader: cream -> brass -> red, -48..+6 dB
@@ -240,8 +272,14 @@ void MixerStrip::resized()
         pan.setBounds (r.removeFromTop (juce::roundToInt (36 * scale)).reduced (juce::roundToInt (8 * scale), 0));
     else
     {
-        gate.setBounds (r.removeFromTop (juce::roundToInt (30 * scale)).reduced (juce::roundToInt (10 * scale), 0));
-        gateText = r.removeFromTop (juce::roundToInt (13 * scale));
+        auto knobRow = [&] (juce::Slider& s, juce::Rectangle<int>& text)
+        {
+            s.setBounds (r.removeFromTop (juce::roundToInt (27 * scale)).reduced (juce::roundToInt (12 * scale), 0));
+            text = r.removeFromTop (juce::roundToInt (13 * scale));
+        };
+        knobRow (gate, gateText);
+        knobRow (bleed, bleedText);
+        knobRow (tune, tuneText);
     }
     auto buttons = r.removeFromTop (juce::roundToInt (22 * scale));
     mute.setBounds (buttons.removeFromLeft (buttons.getWidth() / 2).reduced (2, 1));

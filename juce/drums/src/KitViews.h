@@ -40,7 +40,8 @@ public:
 };
 
 // One mixer strip bound to a mixer ValueTree node: a mic channel (with pan)
-// or a drum instrument (no pan; its fader scales every mic of that drum).
+// or a drum instrument (no pan; its fader scales every mic of that drum, and
+// it has Gate, Bleed and Tune knobs for that drum).
 class MixerStrip final : public juce::Component
 {
 public:
@@ -55,8 +56,11 @@ private:
     juce::String title;
     bool hasPan = true;
     juce::Label readout;
-    juce::Slider pan, gate, fader;
-    juce::Rectangle<int> gateText;
+    juce::Slider pan, gate, bleed, tune, fader;
+    juce::Rectangle<int> gateText, bleedText, tuneText;
+
+    void setupDrumKnob (juce::Slider&, const juce::Identifier& property, double defaultValue);
+    void drawKnobText (juce::Graphics&, juce::Rectangle<int>, const juce::String& text, bool active);
     juce::TextButton mute { "M" }, solo { "S" };
     float meterLevel = 0.0f, meterHold = 0.0f;
     float scale = 1.0f;

@@ -368,14 +368,20 @@ void DrumEngine::render (float* const* channels, int n) noexcept
     jassert (n <= (int) envelope.size());
     n = juce::jmin (n, (int) envelope.size());
 
-    const auto step     = kit->sampleRate / hostRate * std::exp2 ((double) tuneSemitones / 12.0);
-    const auto integral = std::abs (step - 1.0) < 1.0e-12;
-    const auto numCh    = kit->numChannels();
+    const auto rateRatio = kit->sampleRate / hostRate;
+    const auto numCh     = kit->numChannels();
 
     for (auto& v : voices)
     {
         if (! v.active)
             continue;
+
+        // pitch = kit Tune + this drum's Tune (DRUMS mixer)
+        const auto drumTune  = kit->instrumentTune[(size_t) v.instrument]->load (std::memory_order_relaxed);
+        const auto semis     = juce::jlimit (-24.0f, 24.0f, tuneSemitones + drumTune);
+        const auto step      = rateRatio * std::exp2 ((double) semis / 12.0);
+        const auto integral  = std::abs (step - 1.0) < 1.0e-12;
+        const auto drumBleed = bleed * kit->instrumentBleed[(size_t) v.instrument]->load (std::memory_order_relaxed);
 
         // Envelope = choke ramp x DRUMS-fader ramp. When neither is moving we
         // skip the envelope entirely and fold the fader into a scalar gain.
@@ -422,7 +428,7 @@ void DrumEngine::render (float* const* channels, int n) noexcept
         {
             if (s.kitChannel < 0 || s.kitChannel >= numCh)
                 continue;
-            const auto g = voiceGain * (s.main ? 1.0f : bleed);
+            const auto g = voiceGain * (s.main ? 1.0f : drumBleed);
             if (g <= 0.0f)
                 continue;
 

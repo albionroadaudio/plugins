@@ -493,6 +493,8 @@ juce::ValueTree AlbionDrumsAudioProcessor::getInstrumentState (const juce::Strin
         in.setProperty (muteProp, false, nullptr);
         in.setProperty (soloProp, false, nullptr);
         in.setProperty ("gate", -60.0, nullptr);   // -60 = off
+        in.setProperty ("bleed", 100.0, nullptr);  // % of the kit Bleed
+        in.setProperty ("tune", 0.0, nullptr);     // semitones on top of the kit Tune
         drumsTree.appendChild (in, nullptr);
     }
     return in;
@@ -519,6 +521,10 @@ void AlbionDrumsAudioProcessor::updateInstrumentGains()
 
         const auto gateDb = (float) in.getProperty ("gate", -60.0);
         publishedKit->instrumentGate[i]->store (gateDb <= -59.95f ? 0.0f : juce::Decibels::decibelsToGain (gateDb),
+                                                std::memory_order_relaxed);
+        publishedKit->instrumentBleed[i]->store (juce::jlimit (0.0f, 1.0f, (float) in.getProperty ("bleed", 100.0) * 0.01f),
+                                                 std::memory_order_relaxed);
+        publishedKit->instrumentTune[i]->store (juce::jlimit (-12.0f, 12.0f, (float) in.getProperty ("tune", 0.0)),
                                                 std::memory_order_relaxed);
     }
 }
