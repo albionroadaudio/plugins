@@ -18,3 +18,6 @@ name = "Albion Road Audio Bass EQ"
 
 [acoustic_eq]
 name = "Albion Road Audio Acoustic Guitar EQ"
+
+[guitar_eq]
+name = "Albion Road Audio Distorted Guitar EQ"

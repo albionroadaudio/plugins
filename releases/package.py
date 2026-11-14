@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Build portable release zips of the Albion Road Audio plugins for the website.
 
-JUCE plugins (vumeter, compressor, slapback, drums, reference), for each:
+JUCE plugins (vumeter, compressor, slapback, guitar-reverb, drums, reference), for each:
   1. configure + build CLAP and VST3 in <project>/build-release with
      -DALBION_PORTABLE_LINUX=ON (static C++ runtime, old glibc symbol versions)
   2. check the binaries need at most glibc 2.35 and no system libstdc++
@@ -43,6 +43,7 @@ PROJECTS = {
     "vumeter":    ("VuMeter",         "Albion Road Audio VU Meter",       "VU-Meter",      "effect"),
     "compressor": ("Albion76",        "Albion Road Audio 76 Compressor",  "76-Compressor", "effect"),
     "slapback":   ("AlbionSlapback",  "Albion Road Audio Slapback",       "Slapback",      "effect"),
+    "guitar-reverb": ("AlbionGuitarReverb", "Albion Road Audio Guitar Reverb", "Guitar-Reverb", "effect"),
     "drums":      ("AlbionDrums",     "Albion Road Audio Drums",          "Drums",         "instrument"),
     "reference":  ("AlbionReference", "Albion Road Audio Reference",      "Reference",     "effect"),
 }
@@ -56,6 +57,7 @@ RUST = {
     "hihat_eq":    ("rust/surgical-eq", "Albion Road Audio Hi-Hat EQ",    "Hi-Hat-EQ",   "effect", "hihat_eq/README.md", True),
     "bass_eq":     ("rust/surgical-eq", "Albion Road Audio Bass EQ",      "Bass-EQ",     "effect", "bass_eq/README.md",  True),
     "acoustic_eq": ("rust/surgical-eq", "Albion Road Audio Acoustic Guitar EQ", "Acoustic-Guitar-EQ", "effect", "acoustic_eq/README.md", True),
+    "guitar_eq":   ("rust/surgical-eq", "Albion Road Audio Distorted Guitar EQ", "Distorted-Guitar-EQ", "effect", "guitar_eq/README.md", True),
     "drs_grooves": ("rust/drs-grooves", "Albion Road Audio DRS Grooves",  "DRS-Grooves", "note",   "drs/README.md",      True),
 }
 
@@ -69,10 +71,10 @@ License, Version 1.1; the full licence is in `LICENSE-Liberation.txt`.
 """
 WORKSPACES = {
     "rust/surgical-eq": ("Albion Road Audio Surgical EQ series",
-                  "The Albion Road Audio Surgical EQ series (Kick EQ, Snare EQ, Toms EQ, Crash EQ, Hi-Hat EQ, Bass EQ and "
-                  "Acoustic Guitar EQ) are "
+                  "The Albion Road Audio Surgical EQ series (Kick EQ, Snare EQ, Toms EQ, Crash EQ, Hi-Hat EQ, Bass EQ, "
+                  "Acoustic Guitar EQ and Distorted Guitar EQ) are "
                   "per-instrument EQ plugins by Albion Road Audio.",
-                  ["kick_eq", "snare_eq", "toms_eq", "crash_eq", "hihat_eq", "bass_eq", "acoustic_eq"], "The GUI",
+                  ["kick_eq", "snare_eq", "toms_eq", "crash_eq", "hihat_eq", "bass_eq", "acoustic_eq", "guitar_eq"], "The GUI",
                   "eqcore/assets/fonts/LICENSE-Liberation.txt"),
     "rust/drs-grooves": ("Albion Road Audio DRS Grooves",
                   "Albion Road Audio DRS Grooves (rock, indie, grunge, punk and metal grooves for the DrumGizmo "

@@ -1,6 +1,6 @@
 [workspace]
 resolver = "2"
-members = ["eqcore", "kick_eq", "snare_eq", "toms_eq", "crash_eq", "hihat_eq", "bass_eq", "acoustic_eq", "xtask"]
+members = ["eqcore", "kick_eq", "snare_eq", "toms_eq", "crash_eq", "hihat_eq", "bass_eq", "acoustic_eq", "guitar_eq", "xtask"]
 
 [profile.release]
 lto = "thin"

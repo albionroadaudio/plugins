@@ -14,12 +14,13 @@ instructions, licences and the full source for that build.
 |---|---|---|
 | <img src="juce/compressor/docs/screenshot.png" width="260"> | [**Albion Road Audio 76 Compressor**](juce/compressor) | FET-style "76" compressor with presets, a gain-reduction meter and parallel mix |
 | <img src="juce/slapback/docs/screenshot.png" width="260"> | [**Albion Road Audio Slapback**](juce/slapback) | Tape, BBD and digital slapback delay |
+| <img src="juce/guitar-reverb/docs/screenshot.png" width="260"> | [**Albion Road Audio Guitar Reverb**](juce/guitar-reverb) | Bass and distorted-guitar reverb: tight room, studio room, chamber, plates and spring, with filters before the reverb |
 | <img src="juce/vumeter/docs/screenshot.png" width="260"> | [**Albion Road Audio VU Meter**](juce/vumeter) | Analog-style stereo VU meter; audio passes through untouched |
 | <img src="juce/reference/docs/screenshot.png" width="260"> | [**Albion Road Audio Reference**](juce/reference) | Reference analyser with profiles, reference capture and a gentle match EQ |
 
 ## Surgical EQ series
 
-Quick, focused EQs for each drum, plus bass and acoustic guitar. Each knob already sits in the right frequency area for that instrument, with enough room to tweak. Every knob has an on/off switch, and there's a spectrum graph above them.
+Quick, focused EQs for each drum, plus bass, acoustic guitar and distorted electric guitar. Each knob already sits in the right frequency area for that instrument, with enough room to tweak. Every knob has an on/off switch, and there's a spectrum graph above them.
 
 | | Plugin | Bands |
 |---|---|---|
@@ -30,6 +31,7 @@ Quick, focused EQs for each drum, plus bass and acoustic guitar. Each knob alrea
 | <img src="rust/surgical-eq/hihat_eq/docs/screenshot.png" width="260"> | [**Albion Road Audio Hi-Hat EQ**](rust/surgical-eq/hihat_eq) | Low cut · Body · Harsh · Sparkle · High cut |
 | <img src="rust/surgical-eq/bass_eq/docs/screenshot.png" width="260"> | [**Albion Road Audio Bass EQ**](rust/surgical-eq/bass_eq) | Low cut · Room for kick · Fundamental · Boxy · Attack · High cut |
 | <img src="rust/surgical-eq/acoustic_eq/docs/screenshot.png" width="260"> | [**Albion Road Audio Acoustic Guitar EQ**](rust/surgical-eq/acoustic_eq) | 48 dB/oct low cut · Body/mud · Notch · Clarity · Notch · Percussion · 48 dB/oct high cut |
+| <img src="rust/surgical-eq/guitar_eq/docs/screenshot.png" width="260"> | [**Albion Road Audio Distorted Guitar EQ**](rust/surgical-eq/guitar_eq) | Low cut · Body · Mud · Warmth · Clarity · Pick/fizz · Harsh (high shelf) · High cut |
 
 ## Drums
 
@@ -42,7 +44,7 @@ Quick, focused EQs for each drum, plus bass and acoustic guitar. Each knob alrea
 
 ```
 juce/                 JUCE + CMake plugins; each folder builds on its own
-  compressor/ drums/ reference/ slapback/ vumeter/
+  compressor/ drums/ guitar-reverb/ reference/ slapback/ vumeter/
 rust/                 Rust + nih-plug plugins
   surgical-eq/        Cargo workspace: eqcore (shared DSP + GUI) and one crate per instrument
   drs-grooves/        Cargo workspace: the DRS Grooves plugin and drumlib (pattern engine)

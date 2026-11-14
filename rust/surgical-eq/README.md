@@ -19,7 +19,7 @@ The graph shows the incoming audio's spectrum as a solid fill, the post-EQ spect
 ## Layout
 
 - `eqcore/` holds the shared DSP (RBJ and matched "analog" biquads, in f64), parameters, plugin implementation and egui GUI.
-- `kick_eq/`, `snare_eq/`, `toms_eq/`, `crash_eq/`, `hihat_eq/`, `bass_eq/`, `acoustic_eq/` each only define their bands (an `InstrumentDef` in `src/lib.rs`).
+- `kick_eq/`, `snare_eq/`, `toms_eq/`, `crash_eq/`, `hihat_eq/`, `bass_eq/`, `acoustic_eq/`, `guitar_eq/` each only define their bands (an `InstrumentDef` in `src/lib.rs`).
 
 ## Adding an instrument
 
@@ -33,7 +33,7 @@ The window widens automatically for extra bands; up to 8 bands are supported.
 ## Build
 
 ```sh
-cargo xtask bundle -p kick_eq -p snare_eq -p toms_eq -p crash_eq -p hihat_eq -p bass_eq -p acoustic_eq --release
+cargo xtask bundle -p kick_eq -p snare_eq -p toms_eq -p crash_eq -p hihat_eq -p bass_eq -p acoustic_eq -p guitar_eq --release
 ./check-glibc.sh            # must pass for Bitwig's Flatpak (glibc 2.42)
 cp target/bundled/*.clap ~/.clap/
 cp -r target/bundled/*.vst3 ~/.vst3/
