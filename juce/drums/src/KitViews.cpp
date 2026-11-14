@@ -127,22 +127,9 @@ MixerStrip::MixerStrip (juce::ValueTree channelState, bool showPan, float uiScal
     if (hasPan)
         addAndMakeVisible (pan);
 
-    // drum strips only: per-hit gate, this drum's bleed and tune
+    // drum strips only: this drum's bleed and tune
     if (! hasPan)
     {
-        // Gate: Off .. -12 dB below each hit's own peak
-        gate.setRange (-60.0, -12.0, 0.5);
-        gate.setSkewFactorFromMidPoint (-30.0);
-        setupDrumKnob (gate, "gate", -60.0);
-        gate.textFromValueFunction = [] (double v)
-        {
-            return v <= -59.95 ? juce::String ("Off") : juce::String (v, v > -10.0 ? 1 : 0) + " dB";
-        };
-        gate.setTooltip ("Gate: cuts each hit once its level (RMS of the drum's main mics) has fallen this many dB "
-                         "below that hit's own loudest point, then closes over 20 ms. Relative to each hit, not dBFS, "
-                         "so soft and hard hits are shortened alike. Double-click for Off.");
-        gate.onValueChange = [this] { repaint (gateText); };
-
         // Bleed: this drum's level in the other drums' mics, x the kit Bleed knob
         bleed.setRange (0.0, 100.0, 1.0);
         setupDrumKnob (bleed, "bleed", 100.0);
@@ -185,11 +172,44 @@ MixerStrip::MixerStrip (juce::ValueTree channelState, bool showPan, float uiScal
     };
     addAndMakeVisible (fader);
 
+    // the level readout: double-click to type an exact dB value
     readout.setJustificationType (juce::Justification::centred);
     readout.setColour (juce::Label::textColourId, colours::muted);
+    readout.setColour (juce::Label::backgroundWhenEditingColourId, colours::paperLight);
+    readout.setColour (juce::Label::textWhenEditingColourId, colours::ink);
+    readout.setColour (juce::Label::outlineWhenEditingColourId, colours::brass);
     readout.setFont (font (11.0f * scale));
+    readout.setEditable (false, true, false);
+    readout.setTooltip ("Level in dB. Double-click to type a value (e.g. -3 or +6), -inf for silent.");
+    readout.onEditorShow = [this]
+    {
+        if (auto* ed = readout.getCurrentTextEditor())
+        {
+            ed->setJustification (juce::Justification::centred);
+            ed->setInputRestrictions (8, "+-0123456789.infINFdDbB ");
+            ed->selectAll();
+        }
+    };
+    readout.onTextChange = [this]
+    {
+        if (const auto db = parseDb (readout.getText()))
+            fader.setValue (juce::jlimit (fader.getMinimum(), fader.getMaximum(), *db), juce::sendNotificationSync);
+        fader.onValueChange();   // re-format the text (also restores it after bad input)
+    };
     addAndMakeVisible (readout);
     fader.onValueChange();
+}
+
+std::optional<double> MixerStrip::parseDb (juce::String text)
+{
+    text = text.trim().toLowerCase().removeCharacters (" ");
+    if (text.endsWith ("db"))
+        text = text.dropLastCharacters (2);
+    if (text == "-inf" || text == "inf" || text == "off")
+        return -60.0;
+    if (! text.containsAnyOf ("0123456789") || ! text.containsOnly ("+-.0123456789"))
+        return std::nullopt;
+    return text.getDoubleValue();
 }
 
 void MixerStrip::setupDrumKnob (juce::Slider& s, const juce::Identifier& property, double defaultValue)
@@ -235,9 +255,7 @@ void MixerStrip::paint (juce::Graphics& g)
     if (! hasPan)
     {
         // highlighted when moved away from the default
-        const auto gv = gate.getValue(), bv = bleed.getValue(), tv = tune.getValue();
-        drawKnobText (g, gateText, gv > -59.95 ? "GATE " + gate.getTextFromValue (gv).upToFirstOccurrenceOf (" ", false, false)
-                                               : juce::String ("GATE OFF"), gv > -59.95);
+        const auto bv = bleed.getValue(), tv = tune.getValue();
         drawKnobText (g, bleedText, "BLEED " + juce::String (juce::roundToInt (bv)) + "%", bv < 99.5);
         drawKnobText (g, tuneText, "TUNE " + tune.getTextFromValue (tv).upToFirstOccurrenceOf (" ", false, false),
                       std::abs (tv) >= 0.05);
@@ -277,7 +295,6 @@ void MixerStrip::resized()
             s.setBounds (r.removeFromTop (juce::roundToInt (27 * scale)).reduced (juce::roundToInt (12 * scale), 0));
             text = r.removeFromTop (juce::roundToInt (13 * scale));
         };
-        knobRow (gate, gateText);
         knobRow (bleed, bleedText);
         knobRow (tune, tuneText);
     }

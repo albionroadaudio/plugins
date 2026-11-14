@@ -10,7 +10,6 @@ class DrumEngine
 public:
     static constexpr int maxVoices            = 256;
     static constexpr int maxVoicesPerInstrument = 16;
-    static constexpr float gateReleaseMs = 20.0f;   // gate close time (fade-out)
 
     void prepare (double hostSampleRate);
     void setKit (Kit* newKit) noexcept;     // kills all voices
@@ -46,14 +45,13 @@ private:
         double pos = 0.0;
         float  gain = 1.0f;          // velocity / dynamics
         float  instrumentGain = 1.0f; // DRUMS mixer fader, ramped per block
-        float  detector = 0.0f;       // gate: peak follower on the main mics
-        float  detectorPeak = 0.0f;   // gate: loudest point of this hit so far
         float  ramp = 1.0f, rampStep = 0.0f;
         bool   ramping = false;
         bool   active = false;
         std::int64_t started = 0;
     };
 
+    void resetPerformanceState() noexcept;
     void trigger (int instrument, float velocity) noexcept;
     void choke (Voice&, float ms) noexcept;
     const Kit::Sample* selectSample (Kit::Instrument&, float velocity) noexcept;

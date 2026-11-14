@@ -4,6 +4,7 @@
 #include <juce_gui_basics/juce_gui_basics.h>
 #include <juce_audio_basics/juce_audio_basics.h>
 #include <functional>
+#include <optional>
 
 // One drum pad: shows the instrument and its MIDI note, flashes on hits,
 // click to audition (higher up the pad = harder hit).
@@ -41,7 +42,7 @@ public:
 
 // One mixer strip bound to a mixer ValueTree node: a mic channel (with pan)
 // or a drum instrument (no pan; its fader scales every mic of that drum, and
-// it has Gate, Bleed and Tune knobs for that drum).
+// it has Bleed and Tune knobs for that drum).
 class MixerStrip final : public juce::Component
 {
 public:
@@ -51,13 +52,16 @@ public:
     void resized() override;
     void setMeter (float peak) noexcept;
 
+    // What the user typed into the level readout, in dB ("-3", "+6 dB", "-inf"), or nothing if it isn't a number.
+    static std::optional<double> parseDb (juce::String text);
+
 private:
     juce::ValueTree state;
     juce::String title;
     bool hasPan = true;
     juce::Label readout;
-    juce::Slider pan, gate, bleed, tune, fader;
-    juce::Rectangle<int> gateText, bleedText, tuneText;
+    juce::Slider pan, bleed, tune, fader;
+    juce::Rectangle<int> bleedText, tuneText;
 
     void setupDrumKnob (juce::Slider&, const juce::Identifier& property, double defaultValue);
     void drawKnobText (juce::Graphics&, juce::Rectangle<int>, const juce::String& text, bool active);

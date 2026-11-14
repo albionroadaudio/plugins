@@ -9,7 +9,7 @@ namespace
     constexpr int baseHeight = 960;
     constexpr int headerH    = 58;
     constexpr int infoH      = 40;
-    constexpr int mixerH     = 460;   // tall faders, plus Gate / Bleed / Tune on drum strips
+    constexpr int mixerH     = 460;   // tall faders, plus Bleed / Tune on drum strips
     constexpr int stripW     = 74;
     constexpr int drumStripW = 70;
 
@@ -69,9 +69,25 @@ AlbionDrumsAudioProcessorEditor::AlbionDrumsAudioProcessorEditor (AlbionDrumsAud
     micsTab.onClick  = [this] { setMixerView (false); };
     drumsTab.onClick = [this] { setMixerView (true); };
     micsTab.setTooltip ("Mixer per microphone channel (pan, level, mute, solo)");
-    drumsTab.setTooltip ("Mixer per drum: gate, bleed and tune for each drum, and a fader that sets "
+    drumsTab.setTooltip ("Mixer per drum: bleed and tune for each drum, and a fader that sets "
                          "its level in every mic, bleed included");
     showDrums = (bool) drums.getUiState().getProperty ("drumsView", false);
+
+    saveDefaultsButton.setTooltip ("Remember this kit's mix (drum levels, bleed and tune, mic levels and pans) "
+                                   "as its default. It's applied whenever you load this kit, in any project. "
+                                   "Projects you've already saved keep their own mix.");
+    recallDefaultsButton.setTooltip ("Put this kit's mix back to its saved default");
+    saveDefaultsButton.onClick = [this]
+    {
+        const auto ok = drums.saveKitDefaults();
+        saveDefaultsButton.setButtonText (ok ? "SAVED" : "COULDN'T SAVE");
+        juce::Timer::callAfterDelay (1500, [safe = juce::Component::SafePointer<juce::TextButton> (&saveDefaultsButton)]
+                                     { if (safe != nullptr) safe->setButtonText ("SAVE AS KIT DEFAULT"); });
+        updateDefaultsButtons();
+    };
+    recallDefaultsButton.onClick = [this] { drums.recallKitDefaults(); };
+    addAndMakeVisible (saveDefaultsButton);
+    addAndMakeVisible (recallDefaultsButton);
 
     mixerView.setViewedComponent (&mixerContent, false);
     mixerView.setScrollBarsShown (false, true);
@@ -203,6 +219,7 @@ void AlbionDrumsAudioProcessorEditor::rebuildForKit()
         }
     }
     setMixerView (showDrums);
+    updateDefaultsButtons();
 
     // --- variant / midimap pickers ----------------------------------------------------
     variantBox.clear (juce::dontSendNotification);
@@ -234,6 +251,17 @@ void AlbionDrumsAudioProcessorEditor::rebuildForKit()
 
     resized();
     repaint();
+}
+
+void AlbionDrumsAudioProcessorEditor::updateDefaultsButtons()
+{
+    // the shared look-and-feel doesn't draw a disabled state, so fade them here
+    for (auto [button, enabled] : { std::pair { &saveDefaultsButton, drums.getPublishedKit() != nullptr },
+                                    std::pair { &recallDefaultsButton, drums.hasKitDefaults() } })
+    {
+        button->setEnabled (enabled);
+        button->setAlpha (enabled ? 1.0f : 0.4f);
+    }
 }
 
 void AlbionDrumsAudioProcessorEditor::setMixerView (bool drumsView)
@@ -449,6 +477,9 @@ void AlbionDrumsAudioProcessorEditor::resized()
     micsTab.setBounds (tabs.removeFromLeft (64));
     tabs.removeFromLeft (6);
     drumsTab.setBounds (tabs.removeFromLeft (72));
+    recallDefaultsButton.setBounds (tabs.removeFromRight (124));
+    tabs.removeFromRight (6);
+    saveDefaultsButton.setBounds (tabs.removeFromRight (164));
 
     auto mixInner = mixerPanel.reduced (10).withTrimmedTop (22);
     mixerView.setBounds (mixInner);

@@ -33,24 +33,6 @@ namespace
                 out[k] += wav::decode<F> (p) * gain * env[k];
     }
 
-    // Gate detector: mean square of one mic over the frames this block will
-    // play. Reads every 2nd frame without interpolation: plenty for an envelope.
-    template <Fmt F>
-    float streamMeanSquare (const MappedWav& w, int channel, std::int64_t first, std::int64_t count) noexcept
-    {
-        first = juce::jmax<std::int64_t> (0, first);
-        const auto last = juce::jmin (w.numFrames, first + count);
-        const auto* base = w.frames + channel * w.bytesPerSample;
-        float sum = 0.0f;
-        int used = 0;
-        for (auto i = first; i < last; i += 2, ++used)
-        {
-            const auto x = wav::decode<F> (base + i * w.bytesPerFrame);
-            sum += x * x;
-        }
-        return used > 0 ? sum / (float) used : 0.0f;
-    }
-
     // 4-point Hermite read. rel[k]/frac[k] (frame offset from `start`, fraction)
     // are computed once per voice and shared by all of that voice's mics.
     template <Fmt F>
@@ -146,6 +128,24 @@ void DrumEngine::prepare (double hostSampleRate)
     clock = 0;
     for (auto& v : voices)
         v.active = false;
+    resetPerformanceState();
+}
+
+// The humanizer's stamina and the sample selector's "recently played" memory are
+// timestamps on `clock`. When prepare() restarts the clock (hosts do this before a
+// bounce), those timestamps must restart too, or every drum looks as if it was hit
+// minutes in the future: stamina goes far below zero and hits play near-silent
+// until it recovers.
+void DrumEngine::resetPerformanceState() noexcept
+{
+    if (kit == nullptr)
+        return;
+    for (auto& inst : kit->instruments)
+    {
+        inst.stamina = 1.0f;
+        inst.lastHit = 0;
+        std::fill (inst.lastPlayed.begin(), inst.lastPlayed.end(), (std::int64_t) 0);
+    }
 }
 
 void DrumEngine::setKit (Kit* newKit) noexcept
@@ -230,7 +230,8 @@ const Kit::Sample* DrumEngine::selectSample (Kit::Instrument& inst, float veloci
         for (size_t i = 0; i < inst.samples.size(); ++i)
         {
             const auto close   = (inst.samples[i].power - level) / range;
-            const auto diverse = 1.0f / (1.0f + (float) (clock - inst.lastPlayed[i]) / (float) hostRate);
+            const auto since   = (float) juce::jmax<std::int64_t> (0, clock - inst.lastPlayed[i]);
+            const auto diverse = 1.0f / (1.0f + since / (float) hostRate);
             const auto value   = fClose * close * close + fDiverse * diverse + fRandom * random01();
             if (value < bestValue)
             {
@@ -280,7 +281,8 @@ void DrumEngine::trigger (int instrumentIndex, float velocity) noexcept
     // --- humanizer (DrumGizmo's stamina + velocity spread, scaled by amount) ---
     if (humanize > 0.0f)
     {
-        auto mod = juce::jmin (1.0f, inst.stamina + (float) (clock - inst.lastHit) / ((float) hostRate * staminaFalloff));
+        const auto since = (float) juce::jmax<std::int64_t> (0, clock - inst.lastHit);
+        auto mod = juce::jlimit (0.0f, 1.0f, inst.stamina + since / ((float) hostRate * staminaFalloff));
         velocity *= mod;
         inst.stamina = mod * (1.0f - humanize * (1.0f - staminaWeight));
         inst.lastHit = clock;
@@ -446,41 +448,6 @@ void DrumEngine::render (float* const* channels, int n) noexcept
                 case Fmt::Float32: integral ? addStreamDirect<Fmt::Float32> (*s.wav, s.fileChannel, start, n, env, g, out)
                                             : addStreamInterp<Fmt::Float32> (*s.wav, s.fileChannel, start, rel, frac, n, env, g, out, decodeScratch.data(), (int) decodeScratch.size()); break;
             }
-        }
-
-        // --- per-hit gate -------------------------------------------------------------
-        // RMS envelope (10 ms attack, 60 ms release) of the drum's main mics,
-        // referenced to the loudest point of the *envelope*, so the threshold
-        // is relative to the body of the hit rather than its transient click.
-        const auto gate = kit->instrumentGate[(size_t) v.instrument]->load (std::memory_order_relaxed);
-        if (gate > 0.0f && ! v.ramping)
-        {
-            const auto frames = (std::int64_t) std::ceil ((double) n * step);
-            float blockMs = 0.0f;
-            bool anyMain = false;
-            for (const auto& s : v.sample->streams)
-                anyMain |= s.main;
-            for (const auto& s : v.sample->streams)
-            {
-                if (anyMain && ! s.main)
-                    continue;
-                switch (s.wav->format)
-                {
-                    case Fmt::Int16:   blockMs = juce::jmax (blockMs, streamMeanSquare<Fmt::Int16>   (*s.wav, s.fileChannel, start, frames)); break;
-                    case Fmt::Int24:   blockMs = juce::jmax (blockMs, streamMeanSquare<Fmt::Int24>   (*s.wav, s.fileChannel, start, frames)); break;
-                    case Fmt::Int32:   blockMs = juce::jmax (blockMs, streamMeanSquare<Fmt::Int32>   (*s.wav, s.fileChannel, start, frames)); break;
-                    case Fmt::Float32: blockMs = juce::jmax (blockMs, streamMeanSquare<Fmt::Float32> (*s.wav, s.fileChannel, start, frames)); break;
-                }
-            }
-
-            const auto tau = blockMs > v.detector ? 0.010f : 0.060f;
-            v.detector += (1.0f - std::exp (-(float) n / (tau * (float) hostRate))) * (blockMs - v.detector);
-            v.detectorPeak = juce::jmax (v.detectorPeak, v.detector);
-
-            // compare in the power domain: gate is an amplitude ratio
-            const auto age = clock - v.started;
-            if (age > (std::int64_t) (0.015 * hostRate) && v.detector < v.detectorPeak * gate * gate)
-                choke (v, gateReleaseMs);
         }
 
         v.pos += (double) n * step;

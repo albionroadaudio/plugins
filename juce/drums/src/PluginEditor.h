@@ -41,6 +41,8 @@ private:
 
     juce::Viewport padView, mixerView;
     juce::TextButton micsTab { "MICS" }, drumsTab { "DRUMS" };
+    juce::TextButton saveDefaultsButton { "SAVE AS KIT DEFAULT" }, recallDefaultsButton { "RECALL DEFAULT" };
+    void updateDefaultsButtons();
     std::vector<std::unique_ptr<MixerStrip>> drumStrips;
     std::vector<int> drumStripInstrument;   // strip index -> kit instrument
     bool showDrums = false;

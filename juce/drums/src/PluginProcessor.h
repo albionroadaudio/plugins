@@ -105,6 +105,14 @@ public:
 
     int getActiveVoices() const noexcept           { return activeVoices.load (std::memory_order_relaxed); }
 
+    // Per-kit mixer defaults (drum level/bleed/tune, mic level/pan), keyed by the kit's
+    // file name and stored in ~/.config/Albion Road Audio/Drums kit defaults.xml.
+    // They're applied automatically when a different kit file is loaded, never when a
+    // project restores its own state.
+    bool hasKitDefaults() const;
+    bool saveKitDefaults();
+    bool recallKitDefaults();
+
     // Any thread: play a note as if from MIDI (pad audition).
     void audition (int note, float velocity01) noexcept;
 
@@ -114,6 +122,9 @@ private:
     void updateMixerGains();
     void updateInstrumentGains();
     void ensureMixerDefaults (const Kit&);
+    bool applyKitDefaults (const Kit&);
+    static juce::File kitDefaultsFile();
+    static juce::ValueTree readKitDefaults();
     void requestLoadFromState();
     void swapInPendingKit() noexcept;
     void renderRange (juce::AudioBuffer<float>& buffer, int start, int end, int blockLength);
@@ -126,6 +137,7 @@ private:
     Kit* deferredRetire = nullptr;              // audio thread
     Kit* publishedKit = nullptr;                // message thread
     juce::String lastError;
+    bool applyDefaultsOnLoad = false;           // message thread: set by loadKit() for a new kit file
 
     std::atomic<float>* masterParam   = nullptr;
     std::atomic<float>* tuneParam     = nullptr;

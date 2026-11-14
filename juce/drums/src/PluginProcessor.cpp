@@ -1,6 +1,8 @@
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
+#include <algorithm>
 #include <set>
+#include <utility>
 
 namespace
 {
@@ -215,7 +217,7 @@ bool AlbionDrumsAudioProcessor::isBusesLayoutSupported (const BusesLayout& layou
 void AlbionDrumsAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
 {
     engine.prepare (sampleRate);
-    chunkSize = juce::jlimit (16, 128, samplesPerBlock);   // small chunks: ~3 ms gate response
+    chunkSize = juce::jlimit (16, 128, samplesPerBlock);   // render in short chunks: the scratch buffer stays small and in cache
     scratch.setSize (Kit::maxChannels, chunkSize, false, true, false);
     for (int i = 0; i < Kit::maxChannels; ++i)
         scratchPtrs[(size_t) i] = scratch.getWritePointer (i);
@@ -397,6 +399,8 @@ void AlbionDrumsAudioProcessor::renderRange (juce::AudioBuffer<float>& buffer, i
 //==============================================================================
 void AlbionDrumsAudioProcessor::loadKit (const juce::File& kitFile, const juce::File& midimap)
 {
+    // a different kit gets its saved defaults; a new MIDI map for the same kit keeps the mix
+    applyDefaultsOnLoad = publishedKit == nullptr || publishedKit->kitFile != kitFile;
     auto kitState = apvts.state.getOrCreateChildWithName (kitNode, nullptr);
     kitState.setProperty (pathProp, kitFile.getFullPathName(), nullptr);
     kitState.setProperty (midimapProp, midimap.getFullPathName(), nullptr);
@@ -420,6 +424,8 @@ void AlbionDrumsAudioProcessor::requestLoadFromState()
     if (sameAsLoaded || (worker.isLoading() && worker.getRequestedKit() == kitFile))
         return;
 
+    applyDefaultsOnLoad = false;   // restoring a project: its own mixer state wins
+
     if (! kitFile.existsAsFile())
     {
         lastError = "Kit not found: " + kitFile.getFullPathName();
@@ -441,12 +447,15 @@ void AlbionDrumsAudioProcessor::timerCallback()
     if (kit == nullptr)
     {
         lastError = error;
+        applyDefaultsOnLoad = false;
         sendChangeMessage();
         return;
     }
 
     lastError.clear();
     ensureMixerDefaults (*kit);
+    if (std::exchange (applyDefaultsOnLoad, false))
+        applyKitDefaults (*kit);
 
     auto kitState = apvts.state.getOrCreateChildWithName (kitNode, nullptr);
     kitState.setProperty (pathProp, kit->kitFile.getFullPathName(), nullptr);
@@ -492,7 +501,6 @@ juce::ValueTree AlbionDrumsAudioProcessor::getInstrumentState (const juce::Strin
         in.setProperty (levelProp, 0.0, nullptr);
         in.setProperty (muteProp, false, nullptr);
         in.setProperty (soloProp, false, nullptr);
-        in.setProperty ("gate", -60.0, nullptr);   // -60 = off
         in.setProperty ("bleed", 100.0, nullptr);  // % of the kit Bleed
         in.setProperty ("tune", 0.0, nullptr);     // semitones on top of the kit Tune
         drumsTree.appendChild (in, nullptr);
@@ -519,9 +527,6 @@ void AlbionDrumsAudioProcessor::updateInstrumentGains()
         const auto g = (mute || (anySolo && ! solo) || level <= minDb + 0.05f) ? 0.0f : juce::Decibels::decibelsToGain (level);
         publishedKit->instrumentGain[i]->store (g, std::memory_order_relaxed);
 
-        const auto gateDb = (float) in.getProperty ("gate", -60.0);
-        publishedKit->instrumentGate[i]->store (gateDb <= -59.95f ? 0.0f : juce::Decibels::decibelsToGain (gateDb),
-                                                std::memory_order_relaxed);
         publishedKit->instrumentBleed[i]->store (juce::jlimit (0.0f, 1.0f, (float) in.getProperty ("bleed", 100.0) * 0.01f),
                                                  std::memory_order_relaxed);
         publishedKit->instrumentTune[i]->store (juce::jlimit (-12.0f, 12.0f, (float) in.getProperty ("tune", 0.0)),
@@ -535,6 +540,103 @@ void AlbionDrumsAudioProcessor::ensureMixerDefaults (const Kit& kit)
     for (const auto& name : kit.channelNames)
         if (! mixer.getChildWithProperty (nameProp, name).isValid())
             getChannelState (name).setProperty (panProp, defaultPan (name, kit.channelNames), nullptr);
+}
+
+juce::File AlbionDrumsAudioProcessor::kitDefaultsFile()
+{
+    // ALBION_DRUMS_KIT_DEFAULTS overrides the location (used by the test tool)
+    const auto overridePath = juce::SystemStats::getEnvironmentVariable ("ALBION_DRUMS_KIT_DEFAULTS", {});
+    if (juce::File::isAbsolutePath (overridePath))
+        return juce::File (overridePath);
+    return juce::File::getSpecialLocation (juce::File::userApplicationDataDirectory)
+               .getChildFile ("Albion Road Audio").getChildFile ("Drums kit defaults.xml");
+}
+
+juce::ValueTree AlbionDrumsAudioProcessor::readKitDefaults()
+{
+    if (auto xml = juce::XmlDocument::parse (kitDefaultsFile()))
+        if (auto tree = juce::ValueTree::fromXml (*xml); tree.hasType ("KITDEFAULTS"))
+            return tree;
+    return juce::ValueTree ("KITDEFAULTS");
+}
+
+bool AlbionDrumsAudioProcessor::hasKitDefaults() const
+{
+    return publishedKit != nullptr
+        && readKitDefaults().getChildWithProperty ("file", publishedKit->kitFile.getFileName()).isValid();
+}
+
+bool AlbionDrumsAudioProcessor::saveKitDefaults()
+{
+    if (publishedKit == nullptr)
+        return false;
+
+    auto all = readKitDefaults();
+    const auto key = publishedKit->kitFile.getFileName();
+    if (auto old = all.getChildWithProperty ("file", key); old.isValid())
+        all.removeChild (old, nullptr);
+
+    juce::ValueTree entry ("KIT");
+    entry.setProperty ("file", key, nullptr);
+    for (const auto& inst : publishedKit->instruments)
+    {
+        const auto in = getInstrumentState (inst.name);
+        juce::ValueTree d (instrumentNode);
+        d.setProperty (nameProp, inst.name, nullptr);
+        for (const auto& prop : { levelProp, juce::Identifier ("bleed"), juce::Identifier ("tune") })
+            d.setProperty (prop, in.getProperty (prop), nullptr);
+        entry.appendChild (d, nullptr);
+    }
+    for (const auto& name : publishedKit->channelNames)
+    {
+        const auto ch = getChannelState (name);
+        juce::ValueTree d (channelNode);
+        d.setProperty (nameProp, name, nullptr);
+        d.setProperty (levelProp, ch.getProperty (levelProp), nullptr);
+        d.setProperty (panProp, ch.getProperty (panProp), nullptr);
+        entry.appendChild (d, nullptr);
+    }
+    all.appendChild (entry, nullptr);
+
+    const auto file = kitDefaultsFile();
+    auto xml = all.createXml();
+    return file.getParentDirectory().createDirectory() && xml != nullptr && xml->writeTo (file);
+}
+
+bool AlbionDrumsAudioProcessor::recallKitDefaults()
+{
+    return publishedKit != nullptr && applyKitDefaults (*publishedKit);
+}
+
+bool AlbionDrumsAudioProcessor::applyKitDefaults (const Kit& kit)
+{
+    const auto entry = readKitDefaults().getChildWithProperty ("file", kit.kitFile.getFileName());
+    if (! entry.isValid())
+        return false;
+
+    for (const auto& d : entry)
+    {
+        const auto name = d.getProperty (nameProp).toString();
+        if (d.hasType (instrumentNode))
+        {
+            if (std::none_of (kit.instruments.begin(), kit.instruments.end(), [&] (const auto& i) { return i.name == name; }))
+                continue;
+            auto in = getInstrumentState (name);
+            for (const auto& prop : { levelProp, juce::Identifier ("bleed"), juce::Identifier ("tune") })
+                if (d.hasProperty (prop))
+                    in.setProperty (prop, d.getProperty (prop), nullptr);
+        }
+        else if (d.hasType (channelNode))
+        {
+            if (std::find (kit.channelNames.begin(), kit.channelNames.end(), name) == kit.channelNames.end())
+                continue;
+            auto ch = getChannelState (name);
+            for (const auto& prop : { levelProp, panProp })
+                if (d.hasProperty (prop))
+                    ch.setProperty (prop, d.getProperty (prop), nullptr);
+        }
+    }
+    return true;
 }
 
 void AlbionDrumsAudioProcessor::updateMixerGains()

@@ -25,18 +25,19 @@ without long loads.
 5. **Mixer**:
    - **MICS**: level, pan, mute and solo per microphone. Stereo pairs (`OHL/OHR`, `Room-L/Room-R`, …)
      are panned hard left/right automatically.
-   - **DRUMS**: per instrument, a fader, mute, solo and **GATE**, **BLEED** and **TUNE** knobs.
+   - **DRUMS**: per instrument, a fader, mute, solo and **BLEED** and **TUNE** knobs.
      A drum's fader scales that drum in *every* mic, bleed included, so the room stays coherent.
      **BLEED** (0–100 %, default 100 %) sets how much of that drum the *other* mics pick up, e.g. the
      snare in the overheads and kick mic, on top of the kit Bleed knob. Some kits' bleed mics are partly
      out of phase with the close mic, so turning bleed down can thin a drum as well as dry it up.
      **TUNE** (±12 semitones, default 0) re-pitches just that drum, on top of the kit Tune knob.
-     **GATE** cuts each hit once its level has fallen the set number of dB below that hit's own loudest point.
-     - The level is RMS of the drum's main mics (10 ms attack, 60 ms release), so the reference is the body
-       of the drum, not its transient click.
-     - It's relative dB, not dBFS: soft and hard hits are shortened alike.
-     - Range: Off, then -60 to -12 dB. On DRSKit's kick, -45 ≈ 1 s, -30 ≈ 0.5 s, -12 ≈ 0.25 s.
-     - 15 ms hold, 20 ms close. Gated hits stop playing early, which also saves CPU.
+   - **Typing a level**: double-click the dB number under any fader and type a value, e.g. `-3`,
+     `+6` or `-inf`.
+   - **Kit defaults**: once a kit's mix sits right, click **SAVE AS KIT DEFAULT**. The drum levels,
+     bleed and tune, and the mic levels and pans, are then applied whenever you load that kit, in any
+     project. **RECALL DEFAULT** puts the saved mix back. Projects you've already saved keep their own
+     mix. Defaults are stored per kit file name in
+     `~/.config/Albion Road Audio/Drums kit defaults.xml`.
 6. **Direct outs**: 16 extra mono outputs (kit mic 1→16, post-fader, pre-pan). Enable them in your
    host for separate tracks. The main stereo out always carries the full mix.
 
