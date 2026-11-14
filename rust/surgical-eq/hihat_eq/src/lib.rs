@@ -14,6 +14,7 @@ pub const HIHAT: InstrumentDef = InstrumentDef {
         BandDef { name: "Harsh", hint: Move::Cut, kind: BandKind::Peak, freq: 4500.0, min: 3500.0, max: 5500.0, q: 1.8 },
         BandDef { name: "Sparkle", hint: Move::Boost, kind: BandKind::Peak, freq: 7500.0, min: 6000.0, max: 9000.0, q: 1.0 },
     ],
+    ..InstrumentDef::SERIES
 };
 
 pub struct HiHat;

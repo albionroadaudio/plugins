@@ -54,6 +54,8 @@ RUST = {
     "toms_eq":     ("rust/surgical-eq", "Albion Road Audio Toms EQ",      "Toms-EQ",     "effect", "toms_eq/README.md",  True),
     "crash_eq":    ("rust/surgical-eq", "Albion Road Audio Crash EQ",     "Crash-EQ",    "effect", "crash_eq/README.md", True),
     "hihat_eq":    ("rust/surgical-eq", "Albion Road Audio Hi-Hat EQ",    "Hi-Hat-EQ",   "effect", "hihat_eq/README.md", True),
+    "bass_eq":     ("rust/surgical-eq", "Albion Road Audio Bass EQ",      "Bass-EQ",     "effect", "bass_eq/README.md",  True),
+    "acoustic_eq": ("rust/surgical-eq", "Albion Road Audio Acoustic Guitar EQ", "Acoustic-Guitar-EQ", "effect", "acoustic_eq/README.md", True),
     "drs_grooves": ("rust/drs-grooves", "Albion Road Audio DRS Grooves",  "DRS-Grooves", "note",   "drs/README.md",      True),
 }
 
@@ -67,9 +69,10 @@ License, Version 1.1; the full licence is in `LICENSE-Liberation.txt`.
 """
 WORKSPACES = {
     "rust/surgical-eq": ("Albion Road Audio Surgical EQ series",
-                  "The Albion Road Audio Surgical EQ series (Kick EQ, Snare EQ, Toms EQ, Crash EQ and Hi-Hat EQ) are "
+                  "The Albion Road Audio Surgical EQ series (Kick EQ, Snare EQ, Toms EQ, Crash EQ, Hi-Hat EQ, Bass EQ and "
+                  "Acoustic Guitar EQ) are "
                   "per-instrument EQ plugins by Albion Road Audio.",
-                  ["kick_eq", "snare_eq", "toms_eq", "crash_eq", "hihat_eq"], "The GUI",
+                  ["kick_eq", "snare_eq", "toms_eq", "crash_eq", "hihat_eq", "bass_eq", "acoustic_eq"], "The GUI",
                   "eqcore/assets/fonts/LICENSE-Liberation.txt"),
     "rust/drs-grooves": ("Albion Road Audio DRS Grooves",
                   "Albion Road Audio DRS Grooves (rock, indie, grunge, punk and metal grooves for the DrumGizmo "

@@ -19,6 +19,14 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "366ffbaa4442f4684d91e2cd7c5ea7c4ed8add41959a31447066e279e432b618"
 
 [[package]]
+name = "acoustic_eq"
+version = "0.1.0"
+dependencies = [
+ "eqcore",
+ "nih_plug",
+]
+
+[[package]]
 name = "addr2line"
 version = "0.27.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -263,6 +271,14 @@ dependencies = [
  "winapi",
  "x11",
  "x11rb",
+]
+
+[[package]]
+name = "bass_eq"
+version = "0.1.0"
+dependencies = [
+ "eqcore",
+ "nih_plug",
 ]
 
 [[package]]

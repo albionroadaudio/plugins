@@ -14,6 +14,7 @@ pub const TOMS: InstrumentDef = InstrumentDef {
         BandDef { name: "Ring / boxy", hint: Move::Cut, kind: BandKind::Peak, freq: 500.0, min: 400.0, max: 700.0, q: 2.0 },
         BandDef { name: "Click", hint: Move::Boost, kind: BandKind::Peak, freq: 5000.0, min: 3500.0, max: 7000.0, q: 1.0 },
     ],
+    ..InstrumentDef::SERIES
 };
 
 pub struct Toms;

@@ -12,3 +12,9 @@ name = "Albion Road Audio Crash EQ"
 
 [hihat_eq]
 name = "Albion Road Audio Hi-Hat EQ"
+
+[bass_eq]
+name = "Albion Road Audio Bass EQ"
+
+[acoustic_eq]
+name = "Albion Road Audio Acoustic Guitar EQ"

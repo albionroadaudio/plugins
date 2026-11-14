@@ -14,6 +14,7 @@ pub const CRASH: InstrumentDef = InstrumentDef {
         BandDef { name: "Harsh", hint: Move::Cut, kind: BandKind::Peak, freq: 4000.0, min: 3000.0, max: 5500.0, q: 1.8 },
         BandDef { name: "Sizzle", hint: Move::Boost, kind: BandKind::Peak, freq: 10000.0, min: 8000.0, max: 14000.0, q: 0.8 },
     ],
+    ..InstrumentDef::SERIES
 };
 
 pub struct Crash;

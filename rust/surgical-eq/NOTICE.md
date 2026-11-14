@@ -1,6 +1,6 @@
 # Albion Road Audio Surgical EQ series: licence and notices
 
-The Albion Road Audio Surgical EQ series (Kick EQ, Snare EQ, Toms EQ, Crash EQ and Hi-Hat EQ) are per-instrument EQ plugins by Albion Road Audio.
+The Albion Road Audio Surgical EQ series (Kick EQ, Snare EQ, Toms EQ, Crash EQ, Hi-Hat EQ, Bass EQ and Acoustic Guitar EQ) are per-instrument EQ plugins by Albion Road Audio.
 
 Copyright (C) 2026 Albion Road Audio
 

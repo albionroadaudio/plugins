@@ -16,6 +16,7 @@ pub const KICK: InstrumentDef = InstrumentDef {
         BandDef { name: "Boxy", hint: Move::Cut, kind: BandKind::Peak, freq: 400.0, min: 300.0, max: 550.0, q: 1.8 },
         BandDef { name: "Click", hint: Move::Boost, kind: BandKind::Peak, freq: 3500.0, min: 2500.0, max: 5000.0, q: 1.2 },
     ],
+    ..InstrumentDef::SERIES
 };
 
 pub struct Kick;

@@ -19,7 +19,7 @@ instructions, licences and the full source for that build.
 
 ## Surgical EQ series
 
-Quick, focused EQs for each drum. Each knob already sits in the right frequency area for that instrument, with enough room to tweak. Every knob has an on/off switch, and there's a spectrum graph above them.
+Quick, focused EQs for each drum, plus bass and acoustic guitar. Each knob already sits in the right frequency area for that instrument, with enough room to tweak. Every knob has an on/off switch, and there's a spectrum graph above them.
 
 | | Plugin | Bands |
 |---|---|---|
@@ -28,6 +28,8 @@ Quick, focused EQs for each drum. Each knob already sits in the right frequency 
 | <img src="rust/surgical-eq/toms_eq/docs/screenshot.png" width="260"> | [**Albion Road Audio Toms EQ**](rust/surgical-eq/toms_eq) | Low cut · Fundamental · Body · Ring/boxy · Click · High cut |
 | <img src="rust/surgical-eq/crash_eq/docs/screenshot.png" width="260"> | [**Albion Road Audio Crash EQ**](rust/surgical-eq/crash_eq) | Low cut · Body · Bleed · Harsh · Sizzle · High cut |
 | <img src="rust/surgical-eq/hihat_eq/docs/screenshot.png" width="260"> | [**Albion Road Audio Hi-Hat EQ**](rust/surgical-eq/hihat_eq) | Low cut · Body · Harsh · Sparkle · High cut |
+| <img src="rust/surgical-eq/bass_eq/docs/screenshot.png" width="260"> | [**Albion Road Audio Bass EQ**](rust/surgical-eq/bass_eq) | Low cut · Room for kick · Fundamental · Boxy · Attack · High cut |
+| <img src="rust/surgical-eq/acoustic_eq/docs/screenshot.png" width="260"> | [**Albion Road Audio Acoustic Guitar EQ**](rust/surgical-eq/acoustic_eq) | 48 dB/oct low cut · Body/mud · Notch · Clarity · Notch · Percussion · 48 dB/oct high cut |
 
 ## Drums
 

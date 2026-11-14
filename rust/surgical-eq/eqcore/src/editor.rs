@@ -2,8 +2,8 @@
 //! square corners), a response graph with draggable band handles, and one row of knobs.
 
 use crate::analyzer::{Analyzer, FLOOR_DB};
-use crate::dsp::{Coefs, BUTTER_Q2, BUTTER_Q4};
-use crate::{band_coefs, fmt_hz, lp_limit, EqParams, InstrumentDef, Move, Shared, GAIN_RANGE, HP_SLOPE, HP_STEPS, LP_SLOPE, LP_STEPS_KHZ};
+use crate::dsp::{butter_q, Coefs};
+use crate::{band_coefs, fmt_hz, lp_limit, slope_label, EqParams, InstrumentDef, Move, Shared, GAIN_RANGE, HP_STEPS};
 use nih_plug::prelude::*;
 use nih_plug_egui::create_egui_editor;
 use nih_plug_egui::egui::{
@@ -235,17 +235,26 @@ struct KnobStyle {
     /// Arc fills from the centre (gain) rather than from the left (cut knobs).
     bipolar: bool,
     ticks: usize,
-    labels: &'static [(usize, &'static str)],
+    labels: Vec<(usize, String)>,
 }
 
-const GAIN_KNOB: KnobStyle = KnobStyle { bipolar: true, ticks: 13, labels: &[(0, "-6"), (3, "-3"), (6, "0"), (9, "+3"), (12, "+6")] };
-const HP_KNOB: KnobStyle =
-    KnobStyle { bipolar: false, ticks: 16, labels: &[(0, "OFF"), (3, "30"), (6, "60"), (9, "90"), (12, "120"), (15, "150")] };
-const LP_KNOB: KnobStyle = KnobStyle {
-    bipolar: false,
-    ticks: 12,
-    labels: &[(0, "OFF"), (1, "12"), (3, "14"), (5, "16"), (7, "18"), (9, "20"), (11, "22")],
-};
+/// Gain knob for a ±`range` dB band: labels at -range, -range/2, 0, +range/2, +range.
+fn gain_knob(range: f32) -> KnobStyle {
+    let l = |v: f32| if v > 0.0 { format!("+{v:.0}") } else { format!("{v:.0}") };
+    KnobStyle { bipolar: true, ticks: 13, labels: (0..5).map(|i| (i * 3, l(range * (i as f32 - 2.0) / 2.0))).collect() }
+}
+
+fn hp_knob() -> KnobStyle {
+    let labels = (0..HP_STEPS.len()).step_by(3).map(|i| (i, if i == 0 { "OFF".into() } else { format!("{:.0}", HP_STEPS[i]) })).collect();
+    KnobStyle { bipolar: false, ticks: HP_STEPS.len(), labels }
+}
+
+/// High cut knob: OFF, then every other step's kHz value.
+fn lp_knob(steps: &[f32]) -> KnobStyle {
+    let mut labels = vec![(0, "OFF".to_string())];
+    labels.extend((1..steps.len()).step_by(2).map(|i| (i, format!("{:.0}", steps[i]))));
+    KnobStyle { bipolar: false, ticks: steps.len(), labels }
+}
 
 const SWEEP: f32 = 135.0_f32 * std::f32::consts::PI / 180.0;
 
@@ -277,7 +286,7 @@ fn knob<P: Param>(ui: &mut egui::Ui, pal: &Palette, setter: &ParamSetter, param:
         let (r0, r1) = if labelled { (KNOB_R + 8.0, KNOB_R + 13.0) } else { (KNOB_R + 9.0, KNOB_R + 11.0) };
         p.line_segment([polar(c, r0, n), polar(c, r1, n)], Stroke::new(1.0_f32, if labelled { pal.muted } else { pal.line }));
     }
-    for (i, l) in style.labels {
+    for (i, l) in &style.labels {
         let n = *i as f32 / (style.ticks - 1) as f32;
         let pos = polar(c, KNOB_R + 22.0, n);
         paint_centered(p, pos, text(l, mono(), 8.5, pal.muted, 0.0));
@@ -478,12 +487,12 @@ fn draw_graph(ui: &mut egui::Ui, pal: &Palette, setter: &ParamSetter, params: &E
     // response
     let hp = params.hp_hz();
     let lp = params.lp_hz().map(|f| f.min(lp_limit(fs)));
-    let mut cut_coefs: Vec<Coefs> = Vec::with_capacity(3);
+    let mut cut_coefs: Vec<Coefs> = Vec::with_capacity(8);
     if let Some(f) = hp {
-        cut_coefs.extend(BUTTER_Q4.iter().map(|&q| Coefs::highpass(fs, f, q)));
+        cut_coefs.extend((0..def.hp_sections).map(|k| Coefs::highpass(fs, f, butter_q(def.hp_sections, k))));
     }
     if let Some(f) = lp {
-        cut_coefs.push(Coefs::lowpass(fs, f, BUTTER_Q2));
+        cut_coefs.extend((0..def.lp_sections).map(|k| Coefs::lowpass(fs, f, butter_q(def.lp_sections, k))));
     }
     let band_coefs: Vec<Coefs> = def
         .bands
@@ -567,7 +576,7 @@ fn draw_graph(ui: &mut egui::Ui, pal: &Palette, setter: &ParamSetter, params: &E
                     let nf = f_of(&plot, pos.x).clamp(b.min as f64, b.max as f64);
                     let ng = (-(pos.y - plot.center().y) / (plot.height() / 2.0)) as f64 * DB_VIEW;
                     setter.set_parameter(&bp.freq, nf as f32);
-                    setter.set_parameter(&bp.gain, ((ng.clamp(-GAIN_RANGE as f64, GAIN_RANGE as f64) * 10.0).round() / 10.0) as f32);
+                    setter.set_parameter(&bp.gain, ((ng.clamp(-b.range() as f64, b.range() as f64) * 10.0).round() / 10.0) as f32);
                 }
             }
             if hr.drag_stopped() {
@@ -680,8 +689,8 @@ pub fn create(params: Arc<EqParams>, shared: Arc<Shared>) -> Option<Box<dyn Edit
                         column(
                             ui, &pal, setter, "Low cut", "high-pass", &params.hp_on,
                             if hp_idx == 0 { "OFF".into() } else { format!("{:.0} Hz", HP_STEPS[hp_idx.min(15)]) },
-                            |ui, en| knob(ui, &pal, setter, &params.hp, &HP_KNOB, en),
-                            |ui, _| fixed_box(ui, &pal, HP_SLOPE),
+                            |ui, en| knob(ui, &pal, setter, &params.hp, &hp_knob(), en),
+                            |ui, _| fixed_box(ui, &pal, &slope_label(def.hp_sections)),
                         );
                         for (i, b) in def.bands.iter().enumerate() {
                             sep(ui);
@@ -689,7 +698,7 @@ pub fn create(params: Arc<EqParams>, shared: Arc<Shared>) -> Option<Box<dyn Edit
                             column(
                                 ui, &pal, setter, &format!("{} · {}", i + 1, b.name), &hint(b.hint, b.min, b.max), &bp.on,
                                 crate::fmt_db(bp.gain.value()),
-                                |ui, en| knob(ui, &pal, setter, &bp.gain, &GAIN_KNOB, en),
+                                |ui, en| knob(ui, &pal, setter, &bp.gain, &gain_knob(b.range()), en),
                                 |ui, en| freq_slider(ui, &pal, setter, &bp.freq, b.min, b.max, en),
                             );
                         }
@@ -697,9 +706,9 @@ pub fn create(params: Arc<EqParams>, shared: Arc<Shared>) -> Option<Box<dyn Edit
                         let lp_idx = params.lp.value() as usize;
                         column(
                             ui, &pal, setter, "High cut", "low-pass", &params.lp_on,
-                            if lp_idx == 0 { "OFF".into() } else { format!("{:.0} kHz", LP_STEPS_KHZ[lp_idx.min(11)]) },
-                            |ui, en| knob(ui, &pal, setter, &params.lp, &LP_KNOB, en),
-                            |ui, _| fixed_box(ui, &pal, LP_SLOPE),
+                            if lp_idx == 0 { "OFF".into() } else { format!("{:.0} kHz", def.lp_steps_khz[lp_idx.min(def.lp_steps_khz.len() - 1)]) },
+                            |ui, en| knob(ui, &pal, setter, &params.lp, &lp_knob(def.lp_steps_khz), en),
+                            |ui, _| fixed_box(ui, &pal, &slope_label(def.lp_sections)),
                         );
                     });
 

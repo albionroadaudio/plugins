@@ -14,6 +14,7 @@ pub const SNARE: InstrumentDef = InstrumentDef {
         BandDef { name: "Ring", hint: Move::Either, kind: BandKind::Peak, freq: 800.0, min: 600.0, max: 1100.0, q: 2.0 },
         BandDef { name: "Crack", hint: Move::Boost, kind: BandKind::Peak, freq: 5000.0, min: 3500.0, max: 7000.0, q: 1.0 },
     ],
+    ..InstrumentDef::SERIES
 };
 
 pub struct Snare;
