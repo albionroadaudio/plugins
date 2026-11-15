@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Build portable release zips of the Albion Road Audio plugins for the website.
 
-JUCE plugins (vumeter, compressor, slapback, guitar-reverb, drums, reference), for each:
+JUCE plugins (vumeter, compressor, slapback, guitar-reverb, vocal-multitool, drums, reference), for each:
   1. configure + build CLAP and VST3 in <project>/build-release with
      -DALBION_PORTABLE_LINUX=ON (static C++ runtime, old glibc symbol versions)
   2. check the binaries need at most glibc 2.35 and no system libstdc++
@@ -44,6 +44,7 @@ PROJECTS = {
     "compressor": ("Albion76",        "Albion Road Audio 76 Compressor",  "76-Compressor", "effect"),
     "slapback":   ("AlbionSlapback",  "Albion Road Audio Slapback",       "Slapback",      "effect"),
     "guitar-reverb": ("AlbionGuitarReverb", "Albion Road Audio Guitar Reverb", "Guitar-Reverb", "effect"),
+    "vocal-multitool": ("AlbionVocalMultitool", "Albion Road Audio Vocal Multitool", "Vocal-Multitool", "effect"),
     "drums":      ("AlbionDrums",     "Albion Road Audio Drums",          "Drums",         "instrument"),
     "reference":  ("AlbionReference", "Albion Road Audio Reference",      "Reference",     "effect"),
 }
